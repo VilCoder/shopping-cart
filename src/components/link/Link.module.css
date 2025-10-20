@@ -1,0 +1,33 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--light);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
+  transition: transform 300ms linear;
+  will-change: transform;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+  
+  span {
+    font-weight: bold;
+    color: var(--text-secondary);
+    line-height: 1.2; 
+  }
+  
+}
+
+.icon {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+
+  
+  svg {
+    inline-size: 1.5rem;
+    fill: var(--secondary);
+  }
+}

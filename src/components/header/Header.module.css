@@ -1,0 +1,40 @@
+.navigation,
+.logo,
+.navbar,
+.navbar a {
+  display: flex;
+  align-items: center;
+
+}
+.navigation {
+  justify-content: space-between;
+  padding-inline: 0.5rem;
+  background-color: var(--light);
+}
+
+.logo {
+  gap: 0.4rem;
+  font-size: 1.5rem;
+  color: var(--secondary);
+  
+  svg {
+    inline-size: 1.8rem;
+    fill: var(--secondary);
+  }
+}
+
+.navbar {
+  justify-content: center;
+  gap: 1rem;
+
+  a {
+    flex-direction: column;
+    font-size: 0.75rem;
+
+    &:hover,
+    &:hover svg {
+      color: var(--secondary);
+      fill: var(--secondary);
+    }
+  }
+}

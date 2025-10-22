@@ -1,3 +1,9 @@
+* {
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
+}
+
 :root {
   --light: #FFF;
   --primary: #E2E8F0;
@@ -19,16 +25,17 @@ html {
 }
 
 body {
-  min-width: 320px;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-width: 320px;
+  min-height: 100vh;
   background-color: var(--primary);
   color: var(--text-primary);
 }
 
 h2 {
+  font-size: 1.2rem;
   color: var(--text-secondary);
 }
 

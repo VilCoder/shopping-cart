@@ -1,0 +1,24 @@
+.content {
+  font-size: 0.9rem;
+}
+
+.container {
+  padding: 0.7rem;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.reviews {
+  display: grid;
+  gap: 1rem;
+}

@@ -14,16 +14,31 @@ export function Header() {
 
       <nav className={styles.navbar}>
         <a href="#">
-          <HomeIcon />
-          Home
+          <i className={styles.icon}>
+            <HomeIcon />
+            <HomeIcon />
+          </i>
+          <div className={styles.text}>
+            <span data-text="Home">Home</span>
+          </div>
         </a>
         <a href="#">
-          <StoreIcon />
-          Store
+          <i className={styles.icon}>
+            <StoreIcon />
+            <StoreIcon />
+          </i>
+          <div className={styles.text}>
+            <span data-text="Store">Store</span>
+          </div>
         </a>
         <a href="#">
-          <CartIcon />
-          Cart
+          <i className={styles.icon}>
+            <CartIcon />
+            <CartIcon />
+          </i>
+          <div className={styles.text}>
+            <span data-text="Cart">Cart</span>
+          </div>
         </a>
       </nav>
     </header>

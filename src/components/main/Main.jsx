@@ -1,3 +1,5 @@
+import styles from "./Main.module.css";
+
 import {
   DeviceIcon,
   FemaleIcon,
@@ -6,27 +8,17 @@ import {
   SportIcon,
   ToyIcon,
 } from "../Icons";
-
 import { Link } from "../link/Link";
 import { ProductCard } from "../product/ProductCard";
+import { UserReview } from "../reviews/UseReview";
 
 export function Main() {
   return (
-    <>
-      <section
-        style={{
-          paddingInline: "0.7rem",
-        }}
-      >
+    <main className={styles.content}>
+      <section className={styles.container}>
         <h2>Category</h2>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-            gap: "1rem",
-          }}
-        >
+        <div className={styles.links}>
           <Link title="Electronics">
             <DeviceIcon />
           </Link>
@@ -48,10 +40,27 @@ export function Main() {
         </div>
       </section>
 
-      <section>
+      <section className={styles.container}>
         <h2>Featured Products</h2>
-        <ProductCard title="Image" price="127" />
+        <div className={styles.products}>
+          <ProductCard title="Image" price="127" />
+        </div>
       </section>
-    </>
+
+      <section className={`${styles.container} ${styles.reviews}`}>
+        <h2>What our customers say</h2>
+        <UserReview
+          score={5}
+          name="Ana Pérez"
+          description="Me encanta esta aplicacion! Tienen una gran seleccion y el envio es super rapido. Definitavamente mi tienda favorita!"
+        />
+
+        <UserReview
+        score={4}
+          name="Carlos Gómez"
+          description='"La Calidad de los productos es increible. He comprado varias veces y nunca me ha decepcionado. Muy recomendable."'
+        />
+      </section>
+    </main>
   );
 }

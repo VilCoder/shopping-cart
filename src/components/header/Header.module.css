@@ -4,8 +4,8 @@
 .navbar a {
   display: flex;
   align-items: center;
-
 }
+
 .navigation {
   justify-content: space-between;
   padding-inline: 0.5rem;
@@ -16,7 +16,13 @@
   gap: 0.4rem;
   font-size: 1.5rem;
   color: var(--secondary);
-  
+
+  &:hover,
+  &:focus {
+    outline: 2px solid var(--secondary);
+    border-radius: 4px;
+  }
+
   svg {
     inline-size: 1.8rem;
     fill: var(--secondary);
@@ -24,17 +30,70 @@
 }
 
 .navbar {
+  position: relative;
   justify-content: center;
   gap: 1rem;
 
   a {
+    position: relative;
     flex-direction: column;
     font-size: 0.75rem;
+    outline: none;
 
     &:hover,
-    &:hover svg {
+    &:focus {
       color: var(--secondary);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+  svg {
+    transition: transform 500ms ease;
+
+    &:first-of-type {
+      position: absolute;
+      transform: translateY(-40px);
       fill: var(--secondary);
     }
   }
+}
+
+.navbar a:hover svg:first-of-type,
+.navbar a:focus svg:first-of-type {
+  transform: translateY(0px);
+}
+
+.navbar a:hover svg:last-of-type,
+.navbar a:focus svg:last-of-type {
+  transform: translateY(100%);
+}
+
+.text {
+  position: relative;
+  font-weight: 500;
+  overflow: hidden;
+
+  span {
+    display: block;
+    position: relative;
+    transition: transform 500ms ease;
+
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      transform: translateY(30px);
+    }
+  }
+}
+
+.navbar a:hover .text span,
+.navbar a:focus .text span {
+  transform: translateY(-30px);
 }

@@ -12,13 +12,46 @@
   gap: 1rem;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
 .reviews {
   display: grid;
   gap: 1rem;
+}
+
+.container > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.more {
+  font-weight: bold;
+  color: var(--secondary);
+
+  &:hover,
+  &:focus {
+    border-radius: 4px;
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+.explore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.explore > * {
+  margin: 0;
+  padding: 0;
+}
+
+.explore > a {
+  inline-size: 40%;
+  margin-block: 1rem 1.5rem;
+}
+
+.content > div {
+  padding: 0.7rem;
 }

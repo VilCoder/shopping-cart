@@ -1,0 +1,30 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  block-size: 150px;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  
+  & * {
+    color: var(--light);
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2 {
+    margin-block-start: auto;
+  }
+  
+  img {
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    inset: 0;
+    object-fit: cover;
+    opacity: 0.95;
+    transition: opacity 100ms ease-in-out;
+    z-index: -1;
+  }
+}

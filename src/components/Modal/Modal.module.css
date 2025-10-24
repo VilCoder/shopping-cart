@@ -1,0 +1,51 @@
+.modal {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  position: fixed;
+  inset-inline-end: 0.8rem;
+  inset-block-end: 0.8rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: var(--text-secondary);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: var(--light);
+  opacity: 0;
+  transform: translateX(100%);
+  animation: fadeInOut 3s ease forwards;
+
+  p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  svg {
+    inline-size: 0.9rem;
+    fill: var(--light);
+  }
+}
+
+.success {
+  background-color: #4caf50;
+}
+
+.error {
+  background-color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

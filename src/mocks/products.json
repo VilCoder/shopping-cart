@@ -21,7 +21,8 @@
     "rating": {
       "rate": 4.1,
       "count": 259
-    }
+    },
+    "destacated": true
   },
   {
     "id": 3,
@@ -45,7 +46,8 @@
     "rating": {
       "rate": 2.1,
       "count": 430
-    }
+    },
+    "destacated": true
   },
   {
     "id": 5,
@@ -81,7 +83,8 @@
     "rating": {
       "rate": 3,
       "count": 400
-    }
+    },
+    "destacated": true
   },
   {
     "id": 8,
@@ -105,7 +108,8 @@
     "rating": {
       "rate": 3.3,
       "count": 203
-    }
+    },
+    "destacated": true
   },
   {
     "id": 10,

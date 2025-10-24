@@ -2,7 +2,7 @@ import styles from "./ProductCard.module.css";
 
 import initialProducts from "../../mocks/products.json";
 
-export function ProductCard() {
+export function ProductCard({ onClick }) {
   const products = initialProducts;
   const hasProducts = products.length > 0;
 
@@ -10,13 +10,7 @@ export function ProductCard() {
     return <p>Products not found</p>;
   }
 
-  const featuredProducts = [];
-
-  for (let i = 0; i < 4; i++) {
-    const index = Math.floor(Math.random() * 20);
-    const product = products[index];
-    featuredProducts.push(product);
-  }
+  const featuredProducts = products.filter(product => product.destacated);
 
   return (
     <ul className={styles.products}>
@@ -26,7 +20,7 @@ export function ProductCard() {
           <span>{product.title}</span>
           <span>${product.price}</span>
           <div>
-            <button type="button" className={styles.btn}>
+            <button type="button" className={styles.btn} onClick={() => onClick(product)}>
               Add to Cart
               <div className={styles["code-rain"]}></div>
             </button>

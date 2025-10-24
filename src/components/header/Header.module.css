@@ -98,3 +98,18 @@
 .navbar a:focus .text span {
   transform: translateY(-30px);
 }
+
+.products {
+  display: block;
+  position: absolute;
+  inset-inline-end: -0.3rem;
+  inset-block-start: -0.5rem;
+  padding: 0.1rem;
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  color: var(--light);
+  text-align: center;
+  line-height: 0.75rem;
+}

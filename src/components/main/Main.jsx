@@ -2,6 +2,8 @@ import styles from "./Main.module.css";
 import productStyles from "../product/ProductCard.module.css";
 
 import {
+  CheckIcon,
+  CloseIcon,
   DeviceIcon,
   FemaleIcon,
   MaleIcon,
@@ -12,14 +14,24 @@ import {
 import { Link } from "../link/Link";
 import { ProductCard } from "../product/ProductCard";
 import { UserReview } from "../reviews/UseReview";
-import { Banner } from "../banner/Banner";
+import { Carrousel } from "../carrousel/Carrousel";
+import { Modal } from "../Modal/Modal";
+import { useModal } from "../../hooks/useModal";
+import { useCart } from "../../hooks/useCart";
 
 export function Main() {
+  const { showModal, setShowModal } = useModal();
+  const { addToCart } = useCart();
+
+  const handleClick = (product) => {
+    setShowModal(true);
+    addToCart(product)
+  };
+
   return (
     <main className={styles.content}>
-      <div>
-        <Banner />
-      </div>
+      <Carrousel />
+
       <section className={styles.container}>
         <h2>Category</h2>
 
@@ -53,7 +65,7 @@ export function Main() {
           </a>
         </div>
         <div>
-          <ProductCard />
+          <ProductCard onClick={handleClick} />
         </div>
       </section>
 
@@ -77,6 +89,13 @@ export function Main() {
         <p>Explore thousands of products and find your new favorites today</p>
         <Link title="Explore the store" className={productStyles.btn} />
       </section>
+
+      {showModal && (
+        <Modal text="Product added to cart" type="success" show={showModal}>
+          <CheckIcon />
+          {/* <CloseIcon /> */}
+        </Modal>
+      )}
     </main>
   );
 }

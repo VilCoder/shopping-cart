@@ -1,8 +1,11 @@
 import styles from "./Header.module.css";
 
 import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../Icons";
+import { useCart } from "../../hooks/useCart";
 
 export function Header() {
+  const { cart } = useCart();
+
   return (
     <header className={styles.navigation}>
       <h1>
@@ -32,6 +35,7 @@ export function Header() {
           </div>
         </a>
         <a href="#">
+          <span className={styles.products}>{cart.length}</span>
           <i className={styles.icon}>
             <CartIcon />
             <CartIcon />

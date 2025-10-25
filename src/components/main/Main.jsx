@@ -15,7 +15,7 @@ import { Link } from "../link/Link";
 import { ProductCard } from "../product/ProductCard";
 import { UserReview } from "../reviews/UseReview";
 import { Carrousel } from "../carrousel/Carrousel";
-import { Modal } from "../Modal/Modal";
+import { Modal } from "../modal/Modal";
 import { useModal } from "../../hooks/useModal";
 import { useCart } from "../../hooks/useCart";
 
@@ -25,7 +25,7 @@ export function Main() {
 
   const handleClick = (product) => {
     setShowModal(true);
-    addToCart(product)
+    addToCart(product);
   };
 
   return (
@@ -93,7 +93,6 @@ export function Main() {
       {showModal && (
         <Modal text="Product added to cart" type="success" show={showModal}>
           <CheckIcon />
-          {/* <CloseIcon /> */}
         </Modal>
       )}
     </main>

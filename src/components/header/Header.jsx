@@ -2,6 +2,7 @@ import styles from "./Header.module.css";
 
 import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../Icons";
 import { useCart } from "../../hooks/useCart";
+import { Link } from "../link/Link";
 
 export function Header() {
   const { cart } = useCart();
@@ -9,10 +10,9 @@ export function Header() {
   return (
     <header className={styles.navigation}>
       <h1>
-        <a href="#" className={styles.logo}>
+        <Link to="#" title="Shopify" className={styles.logo}>
           <LogoIcon />
-          Shopify
-        </a>
+        </Link>
       </h1>
 
       <nav className={styles.navbar}>

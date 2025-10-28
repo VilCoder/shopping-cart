@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { Header } from "../components/header/Header";
+import { Navigation } from "../components/navigation/Navigation";
 
 // We mock the hook that the Header uses
 vi.mock("../hooks/useCart", () => ({
@@ -13,17 +13,17 @@ vi.mock("../hooks/useCart", () => ({
 
 describe("Header component", () => {
   it("renders correct heading", () => {
-    render(<Header />);
+    render(<Navigation />);
     expect(screen.getByRole("heading").textContent).not.toBeNull();
   });
 
   it("shows number of items in the cart", () => {
-    render(<Header />);
+    render(<Navigation />);
     expect(screen.getByText("1")).toBeInTheDocument();
   });
 
   it("renders all links", () => {
-    render(<Header />);
+    render(<Navigation />);
 
     const links = screen.getAllByRole("link");
 

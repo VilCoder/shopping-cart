@@ -23,16 +23,21 @@
     object-fit: contain;
   }
 
-  span {
+  span,
+  small {
     padding-inline: 0.5rem;
   }
   
-  span:first-of-type {
+  span {
     color: var(--text-secondary);
   }
 
-  span:last-of-type {
+  small {
     margin-block-end: auto;
+  }
+
+  p {
+    text-align: center;
   }
 }
 

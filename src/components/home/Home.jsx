@@ -1,5 +1,5 @@
-import styles from "./Main.module.css";
-import productStyles from "../product/ProductCard.module.css";
+import styles from "./Home.module.css";
+import productStyles from "../product/Products.module.css";
 
 import {
   CheckIcon,
@@ -12,16 +12,19 @@ import {
   ToyIcon,
 } from "../Icons";
 import { Link } from "../link/Link";
-import { ProductCard } from "../product/ProductCard";
+import { Products } from "../product/Products";
 import { UserReview } from "../reviews/UseReview";
 import { Carrousel } from "../carrousel/Carrousel";
 import { Modal } from "../modal/Modal";
 import { useModal } from "../../hooks/useModal";
 import { useCart } from "../../hooks/useCart";
+import initialProducts from "../../mocks/products.json";
 
-export function Main() {
+export function Home() {
   const { showModal, setShowModal } = useModal();
   const { addToCart } = useCart();
+
+  const featuredProducts = initialProducts?.filter(product => product.destacated);
 
   const handleClick = (product) => {
     setShowModal(true);
@@ -65,7 +68,7 @@ export function Main() {
           </a>
         </div>
         <div>
-          <ProductCard onClick={handleClick} />
+          <Products products={featuredProducts} onAdd={handleClick} />
         </div>
       </section>
 
@@ -91,7 +94,7 @@ export function Main() {
       </section>
 
       {showModal && (
-        <Modal text="Product added to cart" type="success" show={showModal}>
+        <Modal text="Product added to cart" type="success">
           <CheckIcon />
         </Modal>
       )}

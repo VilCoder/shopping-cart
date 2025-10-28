@@ -1,10 +1,10 @@
-import styles from "./Header.module.css";
+import styles from "./Navigation.module.css";
 
 import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../Icons";
 import { useCart } from "../../hooks/useCart";
 import { Link } from "../link/Link";
 
-export function Header() {
+export function Navigation() {
   const { cart } = useCart();
 
   return (

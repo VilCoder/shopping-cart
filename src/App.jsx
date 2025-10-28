@@ -1,12 +1,12 @@
-import { Header } from "./components/header/Header";
-import { Main } from "./components/main/Main";
+import { Navigation } from "./components/navigation/Navigation";
+import { Home } from "./components/home/Home";
 import { CartProvider } from "./context/cart";
 
 export function App() {
   return (
     <CartProvider>
-      <Header />
-      <Main />
+      <Navigation />
+      <Home />
     </CartProvider>
   );
 }

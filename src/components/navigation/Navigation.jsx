@@ -16,7 +16,7 @@ export function Navigation() {
       </h1>
 
       <nav className={styles.navbar}>
-        <a href="#">
+        <a href="#" aria-label="Home">
           <i className={styles.icon}>
             <HomeIcon />
             <HomeIcon />
@@ -25,7 +25,7 @@ export function Navigation() {
             <span data-text="Home">Home</span>
           </div>
         </a>
-        <a href="#">
+        <a href="#" aria-label="Store">
           <i className={styles.icon}>
             <StoreIcon />
             <StoreIcon />
@@ -34,7 +34,7 @@ export function Navigation() {
             <span data-text="Store">Store</span>
           </div>
         </a>
-        <a href="#">
+        <a href="#" aria-label="Cart">
           <span className={styles.products}>{cart.length}</span>
           <i className={styles.icon}>
             <CartIcon />

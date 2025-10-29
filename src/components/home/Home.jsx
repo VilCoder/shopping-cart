@@ -13,7 +13,7 @@ import {
 } from "../Icons";
 import { Link } from "../link/Link";
 import { Products } from "../product/Products";
-import { UserReview } from "../reviews/UseReview";
+import { UserReview } from "../reviews/UserReview";
 import { Carrousel } from "../carrousel/Carrousel";
 import { Modal } from "../modal/Modal";
 import { useModal } from "../../hooks/useModal";

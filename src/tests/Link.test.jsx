@@ -8,7 +8,6 @@ describe("Link component", () => {
     render(<Link title="Home" />);
 
     const linkElement = screen.getByRole("link", { name: /home/i });
-
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute("href", "#");
     expect(linkElement).toHaveClass(styles.link);
@@ -18,7 +17,6 @@ describe("Link component", () => {
     render(<Link to="/store" title="Home" />);
 
     const linkElement = screen.getByRole("link", { name: /home/i });
-
     expect(linkElement).toHaveAttribute("href", "/store");
   });
 
@@ -30,7 +28,6 @@ describe("Link component", () => {
     );
 
     const iconElement = screen.getByTestId("icon");
-
     expect(iconElement).toBeInTheDocument();
   });
 
@@ -38,7 +35,6 @@ describe("Link component", () => {
     render(<Link title="Sports" />);
     
     const iconElement = screen.queryByRole("img");
-
     expect(iconElement).not.toBeInTheDocument();
   });
 
@@ -48,7 +44,6 @@ describe("Link component", () => {
     render(<Link title="Electronics" className={customClass} />);
 
     const linkElement = screen.getByRole("link", { name: /electronics/i });
-
     expect(linkElement).toHaveClass(customClass);
     expect(linkElement).not.toHaveClass(styles.link);
   });

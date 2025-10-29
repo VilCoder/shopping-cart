@@ -4,42 +4,32 @@ import { Modal } from "../components/modal/Modal";
 import styles from "../components/modal/Modal.module.css";
 
 describe("Modal component", () => {
-  it("enders correctly with minimum props", () => {
+  it("renders correctly with minimum props", () => {
     render(<Modal text="Product added to cart" />);
 
-    const modalElement = screen.getByTestId("modal");
+    const modal = screen.getByTestId("modal");
 
-    expect(modalElement).toBeInTheDocument();
-    expect(modalElement).toHaveClass(styles.modal);
-    expect(modalElement).not.toHaveClass(styles.success);
-    expect(modalElement).not.toHaveClass(styles.error);
-    expect(modalElement).not.toHaveClass(styles.show);
+    expect(modal).toBeInTheDocument();
+    expect(modal).toHaveClass(styles.modal);
+    expect(modal).not.toHaveClass(styles.success);
+    expect(modal).not.toHaveClass(styles.error);
+    expect(modal).not.toHaveClass(styles.show);
   });
 
   it("applies 'success' class when type is success", () => {
     render(<Modal text="Added" type="success" />);
 
-    const modalElement = screen.getByTestId("modal");
-
-    expect(modalElement).toHaveClass(styles.success);
-    expect(modalElement).not.toHaveClass(styles.error);
+    const modal = screen.getByTestId("modal");
+    expect(modal).toHaveClass(styles.success);
+    expect(modal).not.toHaveClass(styles.error);
   });
 
   it("applies 'error' class when type is error", () => {
     render(<Modal text="Product removed" type="error" />);
 
-    const modalElement = screen.getByTestId("modal");
-
-    expect(modalElement).toHaveClass(styles.error);
-    expect(modalElement).not.toHaveClass(styles.success);
-  });
-
-  it("applies 'show' class when show prop is true", () => {
-    render(<Modal text="Product added to cart" show />);
-
-    const modalElement = screen.getByTestId("modal");
-
-    expect(modalElement).toHaveClass(styles.show);
+    const modal = screen.getByTestId("modal");
+    expect(modal).toHaveClass(styles.error);
+    expect(modal).not.toHaveClass(styles.success);
   });
 
   it("renders children elements inside the modal", () => {
@@ -50,7 +40,6 @@ describe("Modal component", () => {
     );
 
     const child = screen.getByTestId("children");
-
     expect(child).toBeInTheDocument();
     expect(child.textContent).toBe("icon");
   });

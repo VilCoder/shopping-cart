@@ -23,7 +23,6 @@ describe("Products component", () => {
   it("renders 'Products not found' when no products are provider", () => {
     render(<Products products={[]} onAdd={() => {}} />);
 
-
     expect(screen.getByText(/products not found/i)).toBeInTheDocument();
   });
 
@@ -31,9 +30,9 @@ describe("Products component", () => {
     render(<Products products={mockProducts} onAdd={() => {}} />);
 
     const buttons = screen.getAllByRole("button", { name: /add to cart/i })
-    const items = screen.getAllByRole("listitem");
-
     expect(buttons.length).toBe(mockProducts.length);
+
+    const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(mockProducts.length);
     expect(screen.getByText("Smartphone")).toBeInTheDocument();
     expect(screen.getByText("Laptop")).toBeInTheDocument();
@@ -47,7 +46,6 @@ describe("ProductCard component", () => {
     render(<ProductCard product={mockProducts[0]} onClick={() => {}} />);
 
     const image = screen.getByRole("img");
-
     expect(image).toHaveAttribute("src", "/phone.png");
     expect(image).toHaveAttribute("alt", "Smartphone");
   });

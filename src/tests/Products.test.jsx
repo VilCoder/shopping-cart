@@ -15,31 +15,8 @@ const mockProducts = [
     image: "/laptop.png",
     title: "Laptop",
     price: 998,
-  }
+  },
 ];
-
-describe("Products component", () => {
-
-  it("renders 'Products not found' when no products are provider", () => {
-    render(<Products products={[]} onAdd={() => {}} />);
-
-    expect(screen.getByText(/products not found/i)).toBeInTheDocument();
-  });
-
-  it("renders a list of products", () => {
-    render(<Products products={mockProducts} onAdd={() => {}} />);
-
-    const buttons = screen.getAllByRole("button", { name: /add to cart/i })
-    expect(buttons.length).toBe(mockProducts.length);
-
-    const items = screen.getAllByRole("listitem");
-    expect(items).toHaveLength(mockProducts.length);
-    expect(screen.getByText("Smartphone")).toBeInTheDocument();
-    expect(screen.getByText("Laptop")).toBeInTheDocument();
-    expect(screen.getByText("$449")).toBeInTheDocument();
-    expect(screen.getByText("$998")).toBeInTheDocument();
-  });
-});
 
 describe("ProductCard component", () => {
   it("renders product images with correct alt text", () => {
@@ -55,11 +32,11 @@ describe("ProductCard component", () => {
       { id: 2, title: "Tablet", image: "/b.png" }, // Missing price
     ];
 
-    render(<ProductCard product={incompleteProduct} onClick={()=> {}} />);
+    render(<ProductCard product={incompleteProduct} onClick={() => {}} />);
 
     expect(screen.queryByText("Tablet")).toBeNull();
     expect(screen.getByText(/product not available/i)).toBeInTheDocument();
-  })
+  });
 
   it("calls onClick function when 'Add to Cart' is clicked", async () => {
     const onClick = vi.fn();
@@ -69,17 +46,38 @@ describe("ProductCard component", () => {
 
     const button = screen.getByRole("button", { name: /add to cart/i });
 
-    await user.click(button)
-    
-    expect(onClick).toHaveBeenCalled();
+    await user.click(button);
 
+    expect(onClick).toHaveBeenCalled();
   });
 
   it("should not call the onClick function when ins't clicked", async () => {
     const onClick = vi.fn();
-    
+
     render(<ProductCard product={mockProducts[0]} onClick={onclick} />);
 
     expect(onClick).not.toHaveBeenCalled();
-  })
-})
+  });
+});
+
+describe("Products component", () => {
+  it("renders 'Products not found' when no products are provider", () => {
+    render(<Products products={[]} onAdd={() => {}} />);
+
+    expect(screen.getByText(/products not found/i)).toBeInTheDocument();
+  });
+
+  it("renders a list of products", () => {
+    render(<Products products={mockProducts} onAdd={() => {}} />);
+
+    const buttons = screen.getAllByRole("button", { name: /add to cart/i });
+    expect(buttons.length).toBe(mockProducts.length);
+
+    const items = screen.getAllByRole("listitem");
+    expect(items).toHaveLength(mockProducts.length);
+    expect(screen.getByText("Smartphone")).toBeInTheDocument();
+    expect(screen.getByText("Laptop")).toBeInTheDocument();
+    expect(screen.getByText("$449")).toBeInTheDocument();
+    expect(screen.getByText("$998")).toBeInTheDocument();
+  });
+});

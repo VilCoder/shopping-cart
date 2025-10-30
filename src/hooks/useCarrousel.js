@@ -12,7 +12,6 @@ export function useCarrousel() {
     return () => clearInterval(interval);
   }, [messagesIndex.length]);
 
-
   return {
     activeElement
   };

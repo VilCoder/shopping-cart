@@ -1,9 +1,8 @@
 import styles from "./Home.module.css";
-import productStyles from "../product/Products.module.css";
+import productStyles from "../products/Products.module.css";
 
 import {
   CheckIcon,
-  CloseIcon,
   DeviceIcon,
   FemaleIcon,
   MaleIcon,
@@ -12,7 +11,7 @@ import {
   ToyIcon,
 } from "../Icons";
 import { Link } from "../link/Link";
-import { Products } from "../product/Products";
+import { Products } from "../products/Products";
 import { UserReview } from "../reviews/UserReview";
 import { Carrousel } from "../carrousel/Carrousel";
 import { Modal } from "../modal/Modal";

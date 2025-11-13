@@ -1,15 +1,10 @@
-* {
-  /* margin: 0;
-  padding: 0;
-  box-sizing: border-box; */
-}
-
 :root {
   --light: #FFF;
   --primary: #E2E8F0;
   --secondary: #166534;
   --text-primary: #6F7684;
   --text-secondary: #0F172A;
+  --text-muted: #d1d5db;
 
   font-family: system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;

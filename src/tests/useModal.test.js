@@ -9,7 +9,7 @@ describe("useModal hook", () => {
     expect(result.current.showModal).toBeFalsy();
   });
   
-  it("it should allow changing the value of showModal manually", () => {
+  it("should allow changing the value of showModal manually", () => {
     const { result } = renderHook(() => useModal());
     
     act(() => {
@@ -19,7 +19,7 @@ describe("useModal hook", () => {
     expect(result.current.showModal).toBeTruthy();
   });
 
-  it("it should automatically hide the modal after 3 seconds", () => {
+  it("should automatically hide the modal after 3 seconds", () => {
     vi.useFakeTimers();
 
     const { result } = renderHook(() => useModal());

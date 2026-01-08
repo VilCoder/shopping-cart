@@ -1,16 +1,18 @@
-import { Navigation } from "./components/navigation/Navigation";
-import { Home } from "./components/home/Home";
-import { CartProvider } from "./context/cart";
-import { FilterProducts } from "./components/filters/FilterProducts";
-import { FiltersProvider } from "./context/filters";
+import { Navigation } from "./components/navigation/Navigation.jsx";
+import { Home } from "./components/home/Home.jsx";
+import { CartProvider } from "./context/cart.jsx";
+import { FiltersProvider } from "./context/filters.jsx";
+import { Store } from "./components/store/Store.jsx";
+import { Route } from "./components/Route.jsx";
 
 export function App() {
+
   return (
     <CartProvider>
       <Navigation />
-      {/* <Home /> */}
+      <Route path='/' component={<Home />} />
       <FiltersProvider>
-        <FilterProducts />
+        <Route path="/store" component={<Store />} />
       </FiltersProvider>
     </CartProvider>
   );

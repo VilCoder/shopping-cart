@@ -1,12 +1,16 @@
-import styles from "./Link.module.css";
+import { useRouter } from "../../hooks/useRouter.js";
 
-export function Link({ to = "#", title, children, className = "" }) {
-  const selectedClassName = className ? className : styles.link;
+export function Link({ to, children, ...restOfProps }) {
+  const { navigateTo } = useRouter();
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    navigateTo(to);
+  }
 
   return (
-    <a href={to} className={selectedClassName}>
-      {children && <i className={styles.icon}>{children}</i>}
-      <span>{title}</span>
+    <a href={to} {...restOfProps} onClick={handleClick}>
+      {children}
     </a>
   );
 }

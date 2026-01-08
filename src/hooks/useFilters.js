@@ -5,9 +5,10 @@ export function useFilters() {
   const { filters } = useContext(FiltersContext);
 
   const filterProducts = (products) => {
-    products.filter(
+    return products.filter(
       (product) =>
-        product.title.startsWith(filters.title) ||
+        (filters.title === "" ||
+          product.title.toLowerCase().startsWith(filters.title.toLowerCase())) &&
         (filters.category === "all" || product.category === filters.category)
     );
   };

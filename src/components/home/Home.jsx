@@ -23,7 +23,9 @@ export function Home() {
   const { showModal, setShowModal } = useModal();
   const { addToCart } = useCart();
 
-  const featuredProducts = initialProducts?.filter(product => product.destacated);
+  const featuredProducts = initialProducts?.filter(
+    (product) => product.destacated
+  );
 
   const handleClick = (product) => {
     setShowModal(true);
@@ -38,23 +40,46 @@ export function Home() {
         <h2>Category</h2>
 
         <div className={styles.links}>
-          <Link title="Electronics">
-            <DeviceIcon />
+          <Link className={styles.link}>
+            <i className={styles.icon}>
+              <DeviceIcon />
+            </i>
+            <span>Electronics</span>
           </Link>
-          <Link title="Women's Fashion">
-            <FemaleIcon />
+
+          <Link className={styles.link}>
+            <i className={styles.icon}>
+              <FemaleIcon />
+            </i>
+            <span>Women's Fashion</span>
           </Link>
-          <Link title="Men's Fashion">
-            <MaleIcon />
+
+          <Link className={styles.link}>
+            <i className={styles.icon}>
+              <MaleIcon />
+            </i>
+            <span>Men's Fashion</span>
           </Link>
-          <Link title="Home">
-            <SofaIcon />
+
+          <Link className={styles.link}>
+            <i className={styles.icon}>
+              <SofaIcon />
+            </i>
+            <span>Home</span>
           </Link>
-          <Link title="Toys">
-            <ToyIcon />
+
+          <Link className={styles.link}>
+            <i className={styles.icon}>
+              <ToyIcon />
+            </i>
+            <span>Toys</span>
           </Link>
-          <Link title="Sports">
-            <SportIcon />
+
+          <Link className={styles.link}>
+            <i className={styles.icon}>
+              <SportIcon />
+            </i>
+            <span>Sports</span>
           </Link>
         </div>
       </section>
@@ -89,7 +114,9 @@ export function Home() {
       <section className={`${styles.container} ${styles.explore}`}>
         <h2>Ready to renew your style?</h2>
         <p>Explore thousands of products and find your new favorites today</p>
-        <Link title="Explore the store" className={productStyles.btn} />
+        <Link className={productStyles.btn}>
+          <span>Explore the store</span>
+        </Link>
       </section>
 
       {showModal && (

@@ -10,13 +10,14 @@ export function Navigation() {
   return (
     <header className={styles.navigation}>
       <h1>
-        <Link to="#" title="Shopify" className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <LogoIcon />
+          <span>ShopStore</span>
         </Link>
       </h1>
 
       <nav className={styles.navbar}>
-        <a href="#" aria-label="Home">
+        <Link to="/" aria-label="Home">
           <i className={styles.icon}>
             <HomeIcon />
             <HomeIcon />
@@ -24,8 +25,9 @@ export function Navigation() {
           <div className={styles.text}>
             <span data-text="Home">Home</span>
           </div>
-        </a>
-        <a href="#" aria-label="Store">
+        </Link>
+
+        <Link to="/store" aria-label="Store">
           <i className={styles.icon}>
             <StoreIcon />
             <StoreIcon />
@@ -33,8 +35,9 @@ export function Navigation() {
           <div className={styles.text}>
             <span data-text="Store">Store</span>
           </div>
-        </a>
-        <a href="#" aria-label="Cart">
+        </Link>
+
+        <Link to="/cart" aria-label="Cart">
           <span className={styles.products}>{cart.length}</span>
           <i className={styles.icon}>
             <CartIcon />
@@ -43,7 +46,7 @@ export function Navigation() {
           <div className={styles.text}>
             <span data-text="Cart">Cart</span>
           </div>
-        </a>
+        </Link>
       </nav>
     </header>
   );

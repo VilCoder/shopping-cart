@@ -1,4 +1,4 @@
-import { useCarrousel } from "../../hooks/useCarrousel";
+import { useCarrousel } from "../../hooks/useCarrousel.js";
 import styles from "./Carrousel.module.css";
 
 function CarrouselItem({ content, isActive }) {

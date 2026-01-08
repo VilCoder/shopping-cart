@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { FiltersContext } from "../context/filters";
-import { FilterProducts } from "../components/filters/FilterProducts";
+import { FiltersContext } from "../context/filters/FiltersContext.js";
+import { FilterProducts } from "../components/filters/FilterProducts.jsx";
 import userEvent from "@testing-library/user-event";
 
 describe("FilterProducts component", () => {

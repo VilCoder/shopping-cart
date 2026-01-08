@@ -1,7 +1,7 @@
 import styles from "./FilterProducts.module.css";
 import { useContext, useRef, useState } from "react";
-import { FiltersContext } from "../../context/filters";
-import { SearchIcon } from "../Icons";
+import { SearchIcon } from "../Icons.jsx";
+import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
 export function FilterProducts() {
   const { filters, setFilters } = useContext(FiltersContext);

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { Navigation } from "../components/navigation/Navigation";
+import { Navigation } from "../components/navigation/Navigation.jsx";
 
 // We mock the hook that the Navigation uses
 vi.mock("../hooks/useCart", () => ({

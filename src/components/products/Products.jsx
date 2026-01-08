@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styles from "./Products.module.css";
+import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
 export function ProductCard({ product, onClick }) {
   const { image, title, price } = product;
@@ -7,8 +9,8 @@ export function ProductCard({ product, onClick }) {
     title &&
     price ? (
       <>
-        <img src={image} alt={title ? title : "No image"} />
         <span>{title}</span>
+        <img src={image} alt={title ? title : "No image"} />
         <small>${price}</small>
         <div>
           <button
@@ -28,10 +30,11 @@ export function ProductCard({ product, onClick }) {
 }
 
 export function Products({ products, onAdd }) {
+  const { filters } = useContext(FiltersContext)
   const hasProducts = products?.length > 0;
 
   if (!hasProducts) {
-    return <p>Products not found</p>;
+    return <p>No results were found related to: {filters.title}</p>;
   }
 
   return (

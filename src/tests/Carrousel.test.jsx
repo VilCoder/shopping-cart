@@ -5,8 +5,8 @@ vi.mock("../../hooks/useCarrousel", () => ({
   useCarrousel: vi.fn(),
 }));
 
-import * as useCarrouselHook from "../hooks/useCarrousel";
-import { Carrousel } from "../components/carrousel/Carrousel";
+import * as useCarrouselHook from "../hooks/useCarrousel.js";
+import { Carrousel } from "../components/carrousel/Carrousel.jsx";
 
 describe("Carrousel component", () => {
   const mockMessages = [

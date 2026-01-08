@@ -1,6 +1,5 @@
-import { createContext, useState } from "react";
-
-export const FiltersContext = createContext();
+import { useState } from "react";
+import { FiltersContext } from "./FiltersContext.js";
 
 export function FiltersProvider({ children }) {
   const [filters, setFilters] = useState({

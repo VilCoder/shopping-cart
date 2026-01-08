@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { Score, UserReview } from "../components/reviews/UserReview";
+import { Score, UserReview } from "../components/reviews/UserReview.jsx";
 
 vi.mock("../components/Icons", () => ({
   StarIcon: (props) => (

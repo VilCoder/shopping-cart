@@ -43,3 +43,7 @@ svg {
   inline-size: 1.5rem;
   fill: var(--text-primary);
 }
+
+.chevron-icon {
+  fill: none;
+}

@@ -10,13 +10,13 @@ import {
   SportIcon,
   ToyIcon,
 } from "../Icons";
-import { Link } from "../link/Link";
-import { Products } from "../products/Products";
-import { UserReview } from "../reviews/UserReview";
-import { Carrousel } from "../carrousel/Carrousel";
-import { Modal } from "../modal/Modal";
-import { useModal } from "../../hooks/useModal";
-import { useCart } from "../../hooks/useCart";
+import { Link } from "../link/Link.jsx";
+import { Products } from "../products/Products.jsx";
+import { UserReview } from "../reviews/UserReview.jsx";
+import { Carrousel } from "../carrousel/Carrousel.jsx";
+import { Modal } from "../modal/Modal.jsx";
+import { useModal } from "../../hooks/useModal.js";
+import { useCart } from "../../hooks/useCart.js";
 import initialProducts from "../../mocks/products.json";
 
 export function Home() {

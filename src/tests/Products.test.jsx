@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ProductCard, Products } from "../components/product/Products";
+import { ProductCard, Products } from "../components/products/Products.jsx";
 import userEvent from "@testing-library/user-event";
 
 const mockProducts = [

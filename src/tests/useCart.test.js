@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/useCart.js";
 import { CartContext } from "../context/cart";
 import React from "react";
 

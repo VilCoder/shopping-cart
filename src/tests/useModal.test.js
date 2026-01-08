@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { useModal } from "../hooks/useModal";
+import { useModal } from "../hooks/useModal.js";
 import { act } from "react";
 
 describe("useModal hook", () => {

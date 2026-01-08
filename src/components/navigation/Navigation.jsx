@@ -1,8 +1,8 @@
 import styles from "./Navigation.module.css";
 
 import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../Icons";
-import { useCart } from "../../hooks/useCart";
-import { Link } from "../link/Link";
+import { useCart } from "../../hooks/useCart.js";
+import { Link } from "../link/Link.jsx";
 
 export function Navigation() {
   const { cart } = useCart();

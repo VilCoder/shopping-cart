@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Modal } from "../components/modal/Modal";
+import { Modal } from "../components/modal/Modal.jsx";
 import styles from "../components/modal/Modal.module.css";
 
 describe("Modal component", () => {

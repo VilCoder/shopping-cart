@@ -1,5 +1,5 @@
 import styles from "./Home.module.css";
-import productStyles from "../products/Products.module.css";
+import productStyles from "../../products/Products.module.css";
 
 import {
   CheckIcon,
@@ -9,15 +9,15 @@ import {
   SofaIcon,
   SportIcon,
   ToyIcon,
-} from "../Icons";
-import { Link } from "../link/Link.jsx";
-import { Products } from "../products/Products.jsx";
-import { UserReview } from "../reviews/UserReview.jsx";
-import { Carrousel } from "../carrousel/Carrousel.jsx";
-import { Modal } from "../modal/Modal.jsx";
-import { useModal } from "../../hooks/useModal.js";
-import { useCart } from "../../hooks/useCart.js";
-import initialProducts from "../../mocks/products.json";
+} from "../../Icons.jsx";
+import { Link } from "../../link/Link.jsx";
+import { Products } from "../../products/Products.jsx";
+import { UserReview } from "../../reviews/UserReview.jsx";
+import { Carrousel } from "../../carrousel/Carrousel.jsx";
+import { Modal } from "../../modal/Modal.jsx";
+import { useModal } from "../../../hooks/useModal.js";
+import { useCart } from "../../../hooks/useCart.js";
+import initialProducts from "../../../mocks/products.json";
 
 export function Home() {
   const { showModal, setShowModal } = useModal();

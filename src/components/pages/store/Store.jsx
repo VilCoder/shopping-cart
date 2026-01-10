@@ -1,12 +1,12 @@
-import { FilterProducts } from "../filters/FilterProducts.jsx";
-import { Products } from "../products/Products.jsx";
-import { useModal } from "../../hooks/useModal.js";
-import { useCart } from "../../hooks/useCart.js";
-import { Modal } from "../modal/Modal.jsx";
-import { CheckIcon } from "../Icons.jsx";
-import { useFilters } from "../../hooks/useFilters.js";
-import initialProducts from "../../mocks/products.json";
-import { Pagination } from "../pagination/Pagination.jsx";
+import { FilterProducts } from "../../filters/FilterProducts.jsx";
+import { Products } from "../../products/Products.jsx";
+import { useModal } from "../../../hooks/useModal.js";
+import { useCart } from "../../../hooks/useCart.js";
+import { Modal } from "../../modal/Modal.jsx";
+import { CheckIcon } from "../../Icons.jsx";
+import { useFilters } from "../../../hooks/useFilters.js";
+import initialProducts from "../../../mocks/products.json";
+import { Pagination } from "../../pagination/Pagination.jsx";
 import { useState } from "react";
 
 const RESULT_PER_PAGE = 4;

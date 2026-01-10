@@ -47,3 +47,9 @@ svg {
 .chevron-icon {
   fill: none;
 }
+
+#root {
+  min-block-size: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

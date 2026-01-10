@@ -6,6 +6,7 @@ import { Link } from "../link/Link.jsx";
 
 export function Navigation() {
   const { cart } = useCart();
+  console.log(cart);
 
   return (
     <header className={styles.navigation}>

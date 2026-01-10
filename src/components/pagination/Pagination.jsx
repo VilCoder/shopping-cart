@@ -40,22 +40,33 @@ export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
 
   return (
     <nav className={styles.pagination}>
-      <a href="#" style={stylePrevButton} onClick={handlePrevClick}>
+      <a
+        href="#"
+        style={stylePrevButton}
+        onClick={handlePrevClick}
+        aria-label="Previous Page"
+      >
         <ChevronLeftIcon />
       </a>
 
       {pages.map((page) => (
         <a
+          aria-label={`Page ${page}`}
           key={page}
           href="#"
-          className={currentPage === page ? styles.isActive : ""}
+          className={currentPage === page ? styles["is-active"] : ""}
           onClick={(event) => handleChangePage(event, page)}
         >
           {page}
         </a>
       ))}
 
-      <a href="#" style={styleNextButton} onClick={handleNextClick}>
+      <a
+        href="#"
+        style={styleNextButton}
+        onClick={handleNextClick}
+        aria-label="Next Page"
+      >
         <ChevronRightIcon />
       </a>
     </nav>

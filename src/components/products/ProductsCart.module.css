@@ -1,0 +1,125 @@
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.products {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  block-size: 5rem;
+  padding: 1rem;
+  background-color: var(--light);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+
+  article {
+    margin-right: auto;
+
+    h3 {
+      padding: 0;
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+  }
+
+  img {
+    inline-size: 4rem;
+    block-size: 4rem;
+    padding: 0.4rem;
+    object-fit: contain;
+    background-color: #e5e6e6;
+    border-radius: 10px;
+  }
+}
+
+.item > div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.7rem;
+
+  .trash-button {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+    border-radius: 50%;
+  }
+
+  div {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+
+    small {
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    button {
+      display: grid;
+      place-content: center;
+      inline-size: 1.2rem;
+      block-size: 1.2rem;
+      border-radius: 50%;
+
+      &.minus-button {
+        background-color: var(--text-muted);
+
+        svg {
+          fill: var(--text-secondary);
+        }
+      }
+
+      &.plus-button {
+        background-color: var(--secondary);
+
+        svg {
+          fill: var(--light);
+        }
+      }
+    }
+  }
+
+  svg {
+    inline-size: 100%;
+  }
+}
+
+.trash-button:hover,
+.trash-button:focus,
+.minus-button:hover,
+.minus-button:focus,
+.plus-button:hover,
+.plus-button:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+.trash-button:active,
+.minus-button:active,
+.plus-button:active {
+  transform: scale(0.9);
+  transition: transform 300ms;
+}
+
+@media (width <= 580px) {
+  .item > article > h3 {
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

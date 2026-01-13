@@ -9,12 +9,12 @@ import { Cart } from "./components/pages/cart/Cart.jsx";
 export function App() {
   return (
     <CartProvider>
-      <Navigation />
       <FiltersProvider>
+        <Navigation />
         <Route path="/" component={<Home />} />
         <Route path="/store" component={<Store />} />
+        <Route path="/cart" component={<Cart />} />
       </FiltersProvider>
-      <Route path="/cart" component={<Cart />} />
     </CartProvider>
   );
 }

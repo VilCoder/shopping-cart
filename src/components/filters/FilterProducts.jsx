@@ -5,7 +5,7 @@ import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
 export function FilterProducts() {
   const { filters, setFilters } = useContext(FiltersContext);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   let timeout = useRef(null);
 
   const handleChange = (event) => {
@@ -38,7 +38,7 @@ export function FilterProducts() {
           className={styles.searchInput}
           type="search"
           placeholder="Search for products"
-          value={searchText.title}
+          value={searchText}
           aria-label="Search for products"
           onChange={handleChange}
         />
@@ -48,6 +48,7 @@ export function FilterProducts() {
         <select
           className={styles.searchFilters}
           name="category"
+          value={filters.category}
           aria-label="Select category"
           onChange={handleChange}
         >

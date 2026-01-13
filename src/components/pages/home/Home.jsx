@@ -40,42 +40,42 @@ export function Home() {
         <h2>Category</h2>
 
         <div className={styles.links}>
-          <Link className={styles.link}>
+          <Link to="/store" className={styles.link} linkCategory="electronics">
             <i className={styles.icon}>
               <DeviceIcon />
             </i>
             <span>Electronics</span>
           </Link>
 
-          <Link className={styles.link}>
+          <Link to="/store" className={styles.link} linkCategory="women's clothing">
             <i className={styles.icon}>
               <FemaleIcon />
             </i>
             <span>Women's Fashion</span>
           </Link>
 
-          <Link className={styles.link}>
+          <Link to="/store" className={styles.link} linkCategory="men's clothing">
             <i className={styles.icon}>
               <MaleIcon />
             </i>
             <span>Men's Fashion</span>
           </Link>
 
-          <Link className={styles.link}>
+          <Link to="/store" className={styles.link}>
             <i className={styles.icon}>
               <SofaIcon />
             </i>
             <span>Home</span>
           </Link>
 
-          <Link className={styles.link}>
+          <Link to="/store" className={styles.link}>
             <i className={styles.icon}>
               <ToyIcon />
             </i>
             <span>Toys</span>
           </Link>
 
-          <Link className={styles.link}>
+          <Link to="/store" className={styles.link}>
             <i className={styles.icon}>
               <SportIcon />
             </i>
@@ -87,9 +87,9 @@ export function Home() {
       <section className={styles.container}>
         <div>
           <h2 className={styles.subtitle}>Featured Products</h2>
-          <a href="#" className={styles.more}>
+          <Link to="/store" href="#" className={styles.more}>
             See more
-          </a>
+          </Link>
         </div>
         <div>
           <Products products={featuredProducts} onAdd={handleClick} />

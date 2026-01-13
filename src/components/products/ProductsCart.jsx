@@ -9,8 +9,6 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
     return <p>There are no products in the cart</p>;
   }
 
-  console.log(products);
-
   return (
     <ul className={styles.products}>
       {products?.map((product) => (

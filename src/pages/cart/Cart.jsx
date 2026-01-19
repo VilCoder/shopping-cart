@@ -1,7 +1,7 @@
-import { useCart } from "../../../hooks/useCart.js";
-import { Link } from "../../link/Link.jsx";
-import { ProductsCart } from "../../products/ProductsCart.jsx";
 import styles from "./Cart.module.css";
+import { useCart } from "../../hooks/useCart";
+import { ProductsCart } from "../../components/products/ProductsCart.jsx";
+import { Link } from "../../components/link/Link.jsx";
 
 export function Cart() {
   const { cart, addToCart, removeToCart, removeQuantityToCart } = useCart();
@@ -39,7 +39,7 @@ export function Cart() {
           <span>Total</span>
           <small>{formattedTotal}</small>
         </div>
-        <Link className={styles.btn}>
+        <Link to="#" className={styles.btn}>
           <span>Proceed to payment</span>
         </Link>
       </footer>

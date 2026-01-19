@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "../Icons.jsx";
 
 export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const hasPages = pages.length > 0;
 
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
@@ -39,36 +40,40 @@ export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
   };
 
   return (
-    <nav className={styles.pagination}>
-      <a
-        href="#"
-        style={stylePrevButton}
-        onClick={handlePrevClick}
-        aria-label="Previous Page"
-      >
-        <ChevronLeftIcon />
-      </a>
+    <>
+      {hasPages && (
+        <nav className={styles.pagination}>
+          <a
+            href="#"
+            style={stylePrevButton}
+            onClick={handlePrevClick}
+            aria-label="Previous Page"
+          >
+            <ChevronLeftIcon />
+          </a>
 
-      {pages.map((page) => (
-        <a
-          aria-label={`Page ${page}`}
-          key={page}
-          href="#"
-          className={currentPage === page ? styles["is-active"] : ""}
-          onClick={(event) => handleChangePage(event, page)}
-        >
-          {page}
-        </a>
-      ))}
+          {pages?.map((page) => (
+            <a
+              aria-label={`Page ${page}`}
+              key={page}
+              href="#"
+              className={currentPage === page ? styles.isActive : ""}
+              onClick={(event) => handleChangePage(event, page)}
+            >
+              {page}
+            </a>
+          ))}
 
-      <a
-        href="#"
-        style={styleNextButton}
-        onClick={handleNextClick}
-        aria-label="Next Page"
-      >
-        <ChevronRightIcon />
-      </a>
-    </nav>
+          <a
+            href="#"
+            style={styleNextButton}
+            onClick={handleNextClick}
+            aria-label="Next Page"
+          >
+            <ChevronRightIcon />
+          </a>
+        </nav>
+      )}
+    </>
   );
 }

@@ -1,0 +1,17 @@
+.active {
+  color: var(--secondary);
+  fill: var(--secondary);
+
+  i > svg:first-of-type {
+    transform: translateY(0px);
+  }
+
+  i > svg:last-of-type {
+  transform: translateY(100%);
+}
+
+  div > span {
+    transform: translateY(-30px);
+    border: 1px solid;
+  }
+}

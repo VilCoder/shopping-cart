@@ -1,0 +1,51 @@
+#octo4423 .part {
+  animation-name: fade4423;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  fill: currentColor;
+}
+
+#octo4423 #part1 {
+  animation-delay: 0s;
+}
+
+#octo4423 #part2 {
+  animation-delay: 0.125s;
+}
+
+#octo4423 #part3 {
+  animation-delay: 0.25s;
+}
+
+#octo4423 #part4 {
+  animation-delay: 0.375s;
+}
+
+#octo4423 #part5 {
+  animation-delay: 0.5s;
+}
+
+#octo4423 #part6 {
+  animation-delay: 0.625s;
+}
+
+#octo4423 #part7 {
+  animation-delay: 0.75s;
+}
+
+#octo4423 #part8 {
+  animation-delay: 0.875s;
+}
+
+@keyframes fade4423 {
+  0%,
+  25% {
+    fill-opacity: 0;
+  }
+
+  50%,
+  75% {
+    fill-opacity: 1;
+  }
+}

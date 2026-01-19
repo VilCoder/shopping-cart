@@ -11,6 +11,6 @@ export function ProductCard({ product, children }) {
       {children}
     </>
   ) : (
-    <p>Product not available</p>
+    <p>Product not available.</p>
   );
 }

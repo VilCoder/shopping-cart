@@ -3,13 +3,15 @@ import { useContext, useRef, useState } from "react";
 import { SearchIcon } from "../Icons.jsx";
 import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
-export function FilterProducts() {
+export function FilterProducts({ onPageChange }) {
   const { filters, setFilters } = useContext(FiltersContext);
   const [searchText, setSearchText] = useState("");
   let timeout = useRef(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    onPageChange(1);
 
     if (name === "category") {
       setFilters({ ...filters, [name]: value });

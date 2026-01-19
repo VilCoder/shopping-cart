@@ -1,5 +1,5 @@
-import { useCarrousel } from "../../hooks/useCarrousel.js";
 import styles from "./Carrousel.module.css";
+import { useCarrousel } from "../../hooks/useCarrousel.js";
 
 function CarrouselItem({ content, isActive }) {
   const { imageUrl, title, text } = content;

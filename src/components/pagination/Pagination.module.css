@@ -26,7 +26,7 @@
       transform: scale(0.9);
     }
     
-    &.is-active {
+    &.isActive {
       background-color: var(--secondary);
       color: var(--light);
       pointer-events: none;

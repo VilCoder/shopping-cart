@@ -25,14 +25,25 @@
 }
 
 .more {
+  position: relative;
   font-weight: bold;
   color: var(--secondary);
+  outline: none;
 
-  &:hover,
-  &:focus {
-    border-radius: 4px;
-    outline: 2px solid var(--secondary);
-    outline-offset: 2px;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: 0;
+    inline-size: 0;
+    block-size: 2px;
+    background-color: var(--secondary);
+    transition: inline-size 0.1s linear;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    inline-size: 100%;
   }
 }
 
@@ -61,14 +72,16 @@
   background-color: var(--light);
   border-radius: 10px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  transition: transform 300ms linear;
-  will-change: transform;
+  transition: all 0.2s;
 
   &:hover,
   &:focus {
     outline: 2px solid var(--secondary);
     outline-offset: 2px;
-    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 
   span {

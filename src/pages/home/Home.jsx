@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
-import productStyles from "../../products/Products.module.css";
-
+import productStyles from "../../components/products/Products.module.css";
+import initialProducts from "../../mocks/products.json";
 import {
   CheckIcon,
   DeviceIcon,
@@ -9,15 +9,14 @@ import {
   SofaIcon,
   SportIcon,
   ToyIcon,
-} from "../../Icons.jsx";
-import { Link } from "../../link/Link.jsx";
-import { Products } from "../../products/Products.jsx";
-import { UserReview } from "../../reviews/UserReview.jsx";
-import { Carrousel } from "../../carrousel/Carrousel.jsx";
-import { Modal } from "../../modal/Modal.jsx";
-import { useModal } from "../../../hooks/useModal.js";
-import { useCart } from "../../../hooks/useCart.js";
-import initialProducts from "../../../mocks/products.json";
+} from "../../components/Icons.jsx";
+import { Link } from "../../components/link/Link.jsx";
+import { Products } from "../../components/products/Products.jsx";
+import { UserReview } from "../../components/reviews/UserReview.jsx";
+import { Carrousel } from "../../components/carrousel/Carrousel.jsx";
+import { Modal } from "../../components/modal/Modal.jsx";
+import { useModal } from "../../hooks/useModal.js";
+import { useCart } from "../../hooks/useCart.js";
 
 export function Home() {
   const { showModal, setShowModal } = useModal();
@@ -114,7 +113,7 @@ export function Home() {
       <section className={`${styles.container} ${styles.explore}`}>
         <h2>Ready to renew your style?</h2>
         <p>Explore thousands of products and find your new favorites today</p>
-        <Link className={productStyles.btn}>
+        <Link to="#" className={productStyles.btn}>
           <span>Explore the store</span>
         </Link>
       </section>

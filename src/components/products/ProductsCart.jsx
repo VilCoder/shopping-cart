@@ -1,6 +1,6 @@
+import styles from "./ProductsCart.module.css";
 import { MinusIcon, PlusIcon, RemoveIcon } from "../Icons.jsx";
 import { ProductCard } from "./ProductCard.jsx";
-import styles from "./ProductsCart.module.css";
 
 export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
   const hasProducts = products?.length > 0;
@@ -17,7 +17,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
             <div>
               <button
                 type="button"
-                className={styles["trash-button"]}
+                className={styles.trashButton}
                 onClick={() => onRemove(product.id)}
               >
                 <RemoveIcon />
@@ -25,7 +25,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
               <div>
                 <button
                   type="button"
-                  className={styles["minus-button"]}
+                  className={styles.minusButton}
                   onClick={() => onRemoveQuantity(product)}
                 >
                   <MinusIcon />
@@ -33,7 +33,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
                 <small>{product.quantity}</small>
                 <button
                   type="button"
-                  className={styles["plus-button"]}
+                  className={styles.plusButton}
                   onClick={() => onAdd(product)}
                 >
                   <PlusIcon />

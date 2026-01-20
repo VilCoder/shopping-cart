@@ -1,58 +1,65 @@
 import styles from "./FilterProducts.module.css";
-import { useContext, useRef, useState } from "react";
+import { useContext, useId, useRef } from "react";
 import { SearchIcon } from "../Icons.jsx";
 import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
 export function FilterProducts({ onPageChange }) {
+  const searchId = useId();
+  const categoryId = useId();
   const { filters, setFilters } = useContext(FiltersContext);
-  const [searchText, setSearchText] = useState("");
-  let timeout = useRef(null);
+  let timeoutId = useRef(null);
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const searchToFilters = {
+      category: formData.get(categoryId),
+      title: formData.get(searchId),
+    };
 
     onPageChange(1);
 
-    if (name === "category") {
-      setFilters({ ...filters, [name]: value });
-
+    if (event.target.name === categoryId) {
+      setFilters(searchToFilters);
       return;
     }
 
-    setSearchText(value);
-
-    if (timeout.current) {
-      clearTimeout(timeout.current);
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current);
     }
 
-    timeout.current = setTimeout(() => {
-      setFilters({ ...filters, [name]: value });
+    timeoutId.current = setTimeout(() => {
+      setFilters(searchToFilters);
     }, 500);
   };
 
   return (
-    <form id="search-form" className={styles.searchForm} role="search">
+    <form
+      id="search-form"
+      className={styles.searchForm}
+      role="search"
+      onChange={handleChange}
+    >
       <div className={styles.searchBar}>
         <SearchIcon />
 
         <input
-          name="title"
+          name={searchId}
           className={styles.searchInput}
           type="search"
           placeholder="Search for products"
-          value={searchText}
           aria-label="Search for products"
-          onChange={handleChange}
         />
       </div>
 
       <div>
         <select
           className={styles.searchFilters}
-          name="category"
-          value={filters.category}
+          name={categoryId}
+          defaultValue={filters.category}
           aria-label="Select category"
-          onChange={handleChange}
         >
           <option value="all">All</option>
           <option value="women's clothing">Women's clothing</option>

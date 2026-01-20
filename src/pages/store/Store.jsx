@@ -6,29 +6,16 @@ import { Modal } from "../../components/modal/Modal.jsx";
 import { CheckIcon, LoaderIcon } from "../../components/Icons.jsx";
 import { useFilters } from "../../hooks/useFilters.js";
 import { Pagination } from "../../components/pagination/Pagination.jsx";
-import { useState } from "react";
-
-const RESULT_PER_PAGE = 4;
 
 export function Store() {
   const { showModal, setShowModal } = useModal();
   const { addToCart } = useCart();
-  const { filteredProducts, loading } = useFilters();
+  const { loading, currentPage, totalPages, pageResults, handlePageChange } =
+    useFilters();
 
   const handleClick = (product) => {
     setShowModal(true);
     addToCart(product);
-  };
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(filteredProducts?.length / RESULT_PER_PAGE);
-  const pageResults = filteredProducts?.slice(
-    (currentPage - 1) * RESULT_PER_PAGE,
-    currentPage * RESULT_PER_PAGE,
-  );
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
   };
 
   return (
@@ -41,7 +28,7 @@ export function Store() {
             flexDirection: "column",
             alignItems: "center",
             gap: "1rem",
-            color: "var(--secondary)"
+            color: "var(--secondary)",
           }}
         >
           Loading Products...

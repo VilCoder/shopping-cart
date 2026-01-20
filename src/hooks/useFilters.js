@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { FiltersContext } from "../context/filters/FiltersContext.js";
 
+const RESULT_PER_PAGE = 4;
+
 export function useFilters() {
-  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [products, setProducts] = useState([]);
   const { filters } = useContext(FiltersContext);
 
   useEffect(() => {
@@ -25,12 +28,26 @@ export function useFilters() {
     fetchProducts();
   }, []);
 
-  const filteredProducts = products.filter(
-    (product) =>
-      (filters.title === "" ||
-        product.title.toLowerCase().startsWith(filters.title.toLowerCase())) &&
-      (filters.category === "all" || product.category === filters.category),
+  const filteredProducts = products.filter((product) => {
+    const matchesTitle =
+      filters.title === "" ||
+      product.title.toLowerCase().includes(filters.title.toLowerCase());
+
+    const matchesCategory =
+      filters.category === "all" || product.category === filters.category;
+
+    return matchesTitle && matchesCategory;
+  });
+
+  const totalPages = Math.ceil(filteredProducts?.length / RESULT_PER_PAGE);
+  const pageResults = filteredProducts?.slice(
+    (currentPage - 1) * RESULT_PER_PAGE,
+    currentPage * RESULT_PER_PAGE,
   );
 
-  return { filteredProducts, loading };
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  return { loading, currentPage, totalPages, pageResults, handlePageChange };
 }

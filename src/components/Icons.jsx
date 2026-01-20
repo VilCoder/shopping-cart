@@ -180,12 +180,12 @@ export function FilterIcon() {
   );
 }
 
-export function StarIcon({ classNameName }) {
+export function StarIcon({ className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      classNameName={classNameName}
+      className={className}
       viewBox="0 0 24 24"
     >
       <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21z" />
@@ -226,7 +226,7 @@ export function CloseIcon() {
 export function ChevronLeftIcon() {
   return (
     <svg
-      classNameName="chevron-icon"
+      className="chevron-icon"
       width="25"
       height="25"
       fill="none"
@@ -246,7 +246,7 @@ export function ChevronLeftIcon() {
 export function ChevronRightIcon() {
   return (
     <svg
-      classNameName="chevron-icon"
+      className="chevron-icon"
       width="25"
       height="25"
       fill="none"

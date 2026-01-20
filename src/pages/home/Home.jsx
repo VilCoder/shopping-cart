@@ -113,7 +113,7 @@ export function Home() {
       <section className={`${styles.container} ${styles.explore}`}>
         <h2>Ready to renew your style?</h2>
         <p>Explore thousands of products and find your new favorites today</p>
-        <Link to="#" className={productStyles.btn}>
+        <Link to="/store" className={productStyles.btn}>
           <span>Explore the store</span>
         </Link>
       </section>

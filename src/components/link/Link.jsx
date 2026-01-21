@@ -7,7 +7,7 @@ export function Link({
   to,
   children,
   className = "",
-  linkCategory = "all",
+  linkCategory = "",
   ...restOfProps
 }) {
   const { currentPath, navigateTo } = useRouter();
@@ -16,7 +16,7 @@ export function Link({
   const handleClick = (event) => {
     event.preventDefault();
 
-    if (filters.category !== linkCategory) {
+    if (linkCategory && filters.category !== linkCategory) {
       setFilters((prev) => ({
         ...prev,
         category: linkCategory,

@@ -51,6 +51,7 @@ export function FilterProducts({ onPageChange }) {
           type="search"
           placeholder="Search for products"
           aria-label="Search for products"
+          defaultValue={filters.title}
         />
       </div>
 

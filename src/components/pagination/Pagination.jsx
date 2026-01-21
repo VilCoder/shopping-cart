@@ -39,12 +39,19 @@ export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
     }
   };
 
+  const builtPageUrl = (page) => {
+    const url = new URL(window.location);
+    url.searchParams.set("page", page);
+
+    return `${url.pathname}?${url.searchParams.toString()}`;
+  };
+
   return (
     <>
       {hasPages && (
         <nav className={styles.pagination}>
           <a
-            href="#"
+            href={builtPageUrl(currentPage - 1)}
             style={stylePrevButton}
             onClick={handlePrevClick}
             aria-label="Previous Page"
@@ -56,7 +63,7 @@ export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
             <a
               aria-label={`Page ${page}`}
               key={page}
-              href="#"
+              href={builtPageUrl(page)}
               className={currentPage === page ? styles.isActive : ""}
               onClick={(event) => handleChangePage(event, page)}
             >
@@ -65,7 +72,7 @@ export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
           ))}
 
           <a
-            href="#"
+            href={builtPageUrl(currentPage + 1)}
             style={styleNextButton}
             onClick={handleNextClick}
             aria-label="Next Page"

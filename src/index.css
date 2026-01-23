@@ -1,10 +1,11 @@
 :root {
   --light: #FFF;
-  --primary: #E2E8F0;
+  --primary: #F6F7F8;
   --secondary: #166534;
   --text-primary: #6F7684;
   --text-secondary: #0F172A;
   --text-muted: #d1d5db;
+  --color-hover: #dfe8e4;
 
   font-family: system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;

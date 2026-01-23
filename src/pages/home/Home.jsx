@@ -9,7 +9,7 @@ import {
   SofaIcon,
   SportIcon,
   ToyIcon,
-} from "../../components/Icons.jsx";
+} from "../../components/icons/Icons.jsx";
 import { Link } from "../../components/link/Link.jsx";
 import { Products } from "../../components/products/Products.jsx";
 import { UserReview } from "../../components/reviews/UserReview.jsx";
@@ -23,7 +23,7 @@ export function Home() {
   const { addToCart } = useCart();
 
   const featuredProducts = initialProducts?.filter(
-    (product) => product.destacated
+    (product) => product.destacated,
   );
 
   const handleClick = (product) => {
@@ -32,7 +32,7 @@ export function Home() {
   };
 
   return (
-    <main className={styles.content}>
+    <main className={styles.mainContent}>
       <Carrousel />
 
       <section className={styles.container}>
@@ -46,14 +46,22 @@ export function Home() {
             <span>Electronics</span>
           </Link>
 
-          <Link to="/store" className={styles.link} linkCategory="women's clothing">
+          <Link
+            to="/store"
+            className={styles.link}
+            linkCategory="women's clothing"
+          >
             <i className={styles.icon}>
               <FemaleIcon />
             </i>
             <span>Women's Fashion</span>
           </Link>
 
-          <Link to="/store" className={styles.link} linkCategory="men's clothing">
+          <Link
+            to="/store"
+            className={styles.link}
+            linkCategory="men's clothing"
+          >
             <i className={styles.icon}>
               <MaleIcon />
             </i>

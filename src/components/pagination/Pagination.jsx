@@ -1,5 +1,5 @@
 import styles from "./Pagination.module.css";
-import { ChevronLeftIcon, ChevronRightIcon } from "../Icons.jsx";
+import { ChevronLeftIcon, ChevronRightIcon } from "../icons/Icons.jsx";
 
 export function Pagination({ onPageChange, currentPage = 1, totalPages = 5 }) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);

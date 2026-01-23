@@ -30,7 +30,7 @@ export function Cart() {
           onRemoveQuantity={removeQuantityToCart}
         />
       </main>
-      <footer className={styles.footer}>
+      <footer className={styles.footerContent}>
         <div>
           <span>Subtotal</span>
           <small>{formattedTotal}</small>

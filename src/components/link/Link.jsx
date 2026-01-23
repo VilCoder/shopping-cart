@@ -1,37 +1,38 @@
-import styles from "./Link.module.css";
-import { useContext } from "react";
-import { useRouter } from "../../hooks/useRouter.js";
+// import styles from "./Link.module.css";
+// import { useContext } from "react";
+// import { useRouter } from "../../hooks/useRouter.js";
 import { FiltersContext } from "../../context/filters/FiltersContext.js";
+import { Link as NavLink } from "react-router";
 
 export function Link({
   to,
   children,
-  className = "",
-  linkCategory = "",
+  // className = "",
+  // linkCategory = "",
   ...restOfProps
 }) {
-  const { currentPath, navigateTo } = useRouter();
-  const { filters, setFilters } = useContext(FiltersContext);
+  // const { currentPath, navigateTo } = useRouter();
+  // const { filters, setFilters } = useContext(FiltersContext);
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  // const handleClick = (event) => {
+  //   event.preventDefault();
 
-    if (linkCategory && filters.category !== linkCategory) {
-      setFilters((prev) => ({
-        ...prev,
-        category: linkCategory,
-      }));
-    }
+  //   if (linkCategory && filters.category !== linkCategory) {
+  //     setFilters((prev) => ({
+  //       ...prev,
+  //       category: linkCategory,
+  //     }));
+  //   }
 
-    navigateTo(to);
-  };
+  //   navigateTo(to);
+  // };
 
-  const linkClasses =
-    currentPath === to ? `${styles.active} ${className}` : className;
+  // const linkClasses =
+  //   currentPath === to ? `${styles.active} ${className}` : className;
 
   return (
-    <a href={to} className={linkClasses} {...restOfProps} onClick={handleClick}>
+    <NavLink to={to} {...restOfProps}>
       {children}
-    </a>
+    </NavLink>
   );
 }

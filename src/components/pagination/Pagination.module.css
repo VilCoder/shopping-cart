@@ -18,7 +18,10 @@
 
     &:hover,
     &:focus {
-      background-color: var(--text-primary);
+      background-color: var(--color-hover);
+      color: var(--secondary);
+      outline: 1px solid var(--secondary);
+      outline-offset: 2px;
     }
     
     &:active {

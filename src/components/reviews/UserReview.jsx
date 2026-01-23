@@ -1,5 +1,5 @@
 import styles from "./UserReview.module.css";
-import { StarIcon } from "../Icons.jsx";
+import { StarIcon } from "../icons/Icons.jsx";
 
 export function Score({ score }) {
   const stars = 5;

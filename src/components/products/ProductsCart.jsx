@@ -1,5 +1,5 @@
 import styles from "./ProductsCart.module.css";
-import { MinusIcon, PlusIcon, RemoveIcon } from "../Icons.jsx";
+import { MinusIcon, PlusIcon, RemoveIcon } from "../icons/Icons.jsx";
 import { ProductCard } from "./ProductCard.jsx";
 
 export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {

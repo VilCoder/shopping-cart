@@ -1,5 +1,5 @@
 import styles from "./Navigation.module.css";
-import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../Icons";
+import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../icons/Icons.jsx";
 import { useCart } from "../../hooks/useCart.js";
 import { Link } from "../link/Link.jsx";
 

@@ -1,6 +1,6 @@
 import styles from "./FilterProducts.module.css";
 import { useContext, useId, useRef } from "react";
-import { SearchIcon } from "../Icons.jsx";
+import { SearchIcon } from "../icons/Icons.jsx";
 import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
 export function FilterProducts({ onPageChange }) {

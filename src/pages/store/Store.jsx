@@ -3,7 +3,7 @@ import { Products } from "../../components/products/Products.jsx";
 import { useModal } from "../../hooks/useModal.js";
 import { useCart } from "../../hooks/useCart.js";
 import { Modal } from "../../components/modal/Modal.jsx";
-import { CheckIcon, LoaderIcon } from "../../components/Icons.jsx";
+import { CheckIcon, LoaderIcon } from "../../components/icons/Icons.jsx";
 import { useFilters } from "../../hooks/useFilters.js";
 import { Pagination } from "../../components/pagination/Pagination.jsx";
 

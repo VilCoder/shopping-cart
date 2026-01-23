@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FiltersContext } from "../context/filters/FiltersContext.js";
-import { useRouter } from "./useRouter.js";
+import { useLocation, useNavigate } from "react-router";
 
 const RESULT_PER_PAGE = 4;
 
@@ -15,7 +15,8 @@ export function useFilters() {
 
   const [products, setProducts] = useState([]);
   const { filters } = useContext(FiltersContext);
-  const { navigateTo } = useRouter();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -43,12 +44,14 @@ export function useFilters() {
     if (filters.category) params.append("category", filters.category);
     if (currentPage > 1) params.append("page", currentPage);
 
-    const newUrl = params.toString()
-      ? `${window.location.pathname}?${params.toString()}`
-      : window.location.pathname;
-
-    navigateTo(newUrl);
-  }, [filters, currentPage, navigateTo]);
+    navigate(
+      {
+        pathname: location.pathname,
+        search: params.toString(),
+      },
+      { replace: true },
+    );
+  }, [filters, currentPage, navigate, location.pathname]);
 
   const filteredProducts = products.filter((product) => {
     const matchesTitle =

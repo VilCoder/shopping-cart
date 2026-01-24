@@ -1,5 +1,32 @@
-.mainContent {
+.mainContent > *:not(img) {
   padding: 0.7rem;
+}
+
+.mainContent > img {
+  padding: 0; 
+  inline-size: 100%;
+  block-size: 13rem;
+  padding-block: 1.5rem;
+  background-color: #e5e6e6;
+  object-fit: contain;
+}
+
+.mainContent > article {
+  h3,
+  small {
+    margin: 0;
+    display: block;
+    color: var(--text-secondary);
+  }
+
+  small {
+    font-size: 1rem;
+  }
+}
+
+.productDescription {
+  margin: 0;
+  margin-block-start: -1rem;
 }
 
 .detailSection h2 {

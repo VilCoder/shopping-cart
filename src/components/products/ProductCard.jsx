@@ -1,9 +1,10 @@
+import { CartIconPlus } from "../icons/Icons";
 import styles from "./ProductCard.module.css";
 
 export function ProductCard({ product, children }) {
   const { image, title, price } = product;
 
-  return title && price ? (
+  return(
     <>
       <img src={image} alt={title ? title : "No image"} />
       <article>
@@ -12,9 +13,7 @@ export function ProductCard({ product, children }) {
       </article>
       {children}
     </>
-  ) : (
-    <p>Product not available.</p>
-  );
+  )
 }
 
 export function ButtonCard({ product, onClick }) {
@@ -25,6 +24,7 @@ export function ButtonCard({ product, onClick }) {
         className={styles.btn}
         onClick={() => onClick(product)}
       >
+        <CartIconPlus />
         Add to Cart
         <div className={styles.codeRain}></div>
       </button>

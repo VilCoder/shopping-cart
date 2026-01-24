@@ -1,5 +1,4 @@
 import styles from "./Home.module.css";
-import productStyles from "../../components/products/Products.module.css";
 import initialProducts from "../../mocks/products.json";
 import {
   CheckIcon,
@@ -121,7 +120,7 @@ export function Home() {
       <section className={`${styles.container} ${styles.explore}`}>
         <h2>Ready to renew your style?</h2>
         <p>Explore thousands of products and find your new favorites today</p>
-        <Link to="/store" className={productStyles.btn}>
+        <Link to="/store" className={styles.btn}>
           <span>Explore the store</span>
         </Link>
       </section>

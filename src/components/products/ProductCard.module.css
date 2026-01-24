@@ -1,5 +1,7 @@
 .btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   font-weight: bold;
   inline-size: 100%;
@@ -21,6 +23,10 @@
   
   &:active {
     transform: scale(0.95);
+  }
+
+  svg {
+    fill: currentColor;
   }
 }
 

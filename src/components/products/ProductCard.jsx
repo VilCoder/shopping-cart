@@ -1,19 +1,25 @@
 import { CartIconPlus } from "../icons/Icons";
+import { Link } from "../link/Link";
 import styles from "./ProductCard.module.css";
 
-export function ProductCard({ product, children }) {
-  const { image, title, price } = product;
+export function ProductCard({ product, children, detailsTitle = "" }) {
+  const { id, image, title, price } = product;
 
-  return(
+  return (
     <>
-      <img src={image} alt={title ? title : "No image"} />
-      <article>
+      <img src={image} alt={title} className={styles.image} />
+      <article className={styles.info}>
+        {detailsTitle && (
+          <Link to={`/products/${id}`} className={styles.detailsButton}>
+            {detailsTitle}
+          </Link>
+        )}
         <h3>{title}</h3>
         <small>${price}</small>
       </article>
       {children}
     </>
-  )
+  );
 }
 
 export function ButtonCard({ product, onClick }) {

@@ -1,4 +1,5 @@
 import styles from "./Navigation.module.css";
+import { NavLink } from "react-router";
 import { CartIcon, HomeIcon, LogoIcon, StoreIcon } from "../icons/Icons.jsx";
 import { useCart } from "../../hooks/useCart.js";
 import { Link } from "../link/Link.jsx";
@@ -16,7 +17,11 @@ export function Navigation() {
       </h1>
 
       <nav className={styles.navbar}>
-        <Link to="/" aria-label="Home">
+        <NavLink
+          to="/"
+          aria-label="Home"
+          className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+        >
           <i className={styles.icon}>
             <HomeIcon />
             <HomeIcon />
@@ -24,9 +29,13 @@ export function Navigation() {
           <div className={styles.text}>
             <span data-text="Home">Home</span>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link to="/store" aria-label="Store">
+        <NavLink
+          to="/store"
+          aria-label="Store"
+          className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+        >
           <i className={styles.icon}>
             <StoreIcon />
             <StoreIcon />
@@ -34,9 +43,13 @@ export function Navigation() {
           <div className={styles.text}>
             <span data-text="Store">Store</span>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link to="/cart" aria-label="Cart">
+        <NavLink
+          to="/cart"
+          aria-label="Cart"
+          className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+        >
           <span className={styles.products}>{cart.length}</span>
           <i className={styles.icon}>
             <CartIcon />
@@ -45,7 +58,7 @@ export function Navigation() {
           <div className={styles.text}>
             <span data-text="Cart">Cart</span>
           </div>
-        </Link>
+        </NavLink>
       </nav>
     </header>
   );

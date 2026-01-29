@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { FiltersContext } from "./FiltersContext.js";
+import { useSearchParams } from "react-router";
 
 export function FiltersProvider({ children }) {
+  const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
-
     return {
-      category: params.get("category") || "all",
-      title: params.get("text") || "",
+      category: searchParams.get("category") || "all",
+      title: searchParams.get("text") || "",
     };
   });
 

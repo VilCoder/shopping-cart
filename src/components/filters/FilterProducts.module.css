@@ -60,6 +60,7 @@
 
 .searchFilters:focus,
 .searchFilters:hover {
+  outline-color: var(--secondary);
   width: 160px;
   text-indent: 0;
   background-position: right 0.5rem center;

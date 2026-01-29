@@ -6,6 +6,7 @@ import {
   ProductCard,
 } from "../../components/products/ProductCard.jsx";
 import { LoaderIcon } from "../../components/icons/Icons.jsx";
+import { Link } from "../../components/link/Link.jsx";
 
 export function ProductDetail() {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ export function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
+  const [sizeChosen, setSizeChosen] = useState("");
+  const [colorChosen, setColorChosen] = useState("");
   let product;
 
   useEffect(() => {
@@ -75,6 +78,16 @@ export function ProductDetail() {
   return (
     <>
       <main className={styles.mainContent}>
+        <div className={styles.container}>
+          <nav className={styles.breadcrumb}>
+            <Link to="/store" className={styles.breadcrumbButton}>
+              store
+            </Link>
+            <span className={styles.breadcrumbSeparator}>/</span>
+            <span className={styles.breadcrumbCurrent}>{product.title}</span>
+          </nav>
+        </div>
+
         <ProductCard product={product}>
           <p className={styles.productDescription}>
             Discover the perfect combination of style and comfort. Its versatile
@@ -85,19 +98,48 @@ export function ProductDetail() {
         <section className={styles.sizeSection}>
           <h4>Talla</h4>
           <div className={styles.sizeButtons}>
-            <button className={styles.sizeBtn}>S</button>
-            <button className={styles.sizeBtn}>M</button>
-            <button className={styles.sizeBtn}>L</button>
-            <button className={styles.sizeBtn}>XL</button>
+            <button
+              className={`${styles.sizeBtn} ${sizeChosen === "s" ? styles.activeSize : ""}`}
+              onClick={() => setSizeChosen("s")}
+            >
+              S
+            </button>
+            <button
+              className={`${styles.sizeBtn} ${sizeChosen === "m" ? styles.activeSize : ""}`}
+              onClick={() => setSizeChosen("m")}
+            >
+              M
+            </button>
+            <button
+              className={`${styles.sizeBtn} ${sizeChosen === "l" ? styles.activeSize : ""}`}
+              onClick={() => setSizeChosen("l")}
+            >
+              L
+            </button>
+            <button
+              className={`${styles.sizeBtn} ${sizeChosen === "xl" ? styles.activeSize : ""}`}
+              onClick={() => setSizeChosen("xl")}
+            >
+              XL
+            </button>
           </div>
         </section>
 
         <section className={styles.colorSection}>
           <h4>Color</h4>
           <div className={styles.colors}>
-            <button className={`${styles.color} ${styles.darkblue}`}></button>
-            <button className={`${styles.color} ${styles.darkgreen}`}></button>
-            <button className={`${styles.color} ${styles.blue}`}></button>
+            <button
+              className={`${styles.color} ${styles.darkblue} ${colorChosen === "darkblue" ? styles.activeColor : ""}`}
+              onClick={() => setColorChosen("darkblue")}
+            ></button>
+            <button
+              className={`${styles.color} ${styles.darkgreen} ${colorChosen === "darkgreen" ? styles.activeColor : ""}`}
+              onClick={() => setColorChosen("darkgreen")}
+            ></button>
+            <button
+              className={`${styles.color} ${styles.blue} ${colorChosen === "blue" ? styles.activeColor : ""}`}
+              onClick={() => setColorChosen("blue")}
+            ></button>
           </div>
         </section>
       </main>

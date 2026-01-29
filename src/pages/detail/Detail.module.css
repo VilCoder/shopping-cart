@@ -3,7 +3,7 @@
 }
 
 .mainContent > img {
-  padding: 0; 
+  padding: 0;
   inline-size: 100%;
   block-size: 13rem;
   padding-block: 1.5rem;
@@ -68,11 +68,16 @@
     background-color: var(--light);
     transition: all 0.3s;
 
+    &.activeSize,
     &:hover,
     &:focus {
       background-color: var(--color-hover);
       border: 1px solid var(--secondary);
       color: var(--secondary);
+    }
+
+    &:active {
+      transform: scale(0.9);
     }
   }
 }
@@ -90,10 +95,15 @@
     list-style: none;
     transition: all 0.3s;
 
+    &.activeColor,
     &:hover,
     &:focus {
       outline: 2px solid var(--secondary);
       outline-offset: 2px;
+    }
+
+    &:active {
+      transform: scale(0.9);
     }
 
     &.darkblue {
@@ -123,4 +133,39 @@
     border: 1px solid;
     margin: 0;
   }
+}
+
+.container {
+  padding-block: 2rem;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.breadcrumbButton {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbButton:hover {
+  color: var(--secondary);
+}
+
+.breadcrumbSeparator {
+  margin: 0 0.5rem;
+}
+
+.breadcrumbCurrent {
+  color: var(--secondary);
 }

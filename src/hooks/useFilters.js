@@ -1,22 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { FiltersContext } from "../context/filters/FiltersContext.js";
-import { useLocation, useNavigate } from "react-router";
+import { useSearchParams } from "react-router";
 
 const RESULT_PER_PAGE = 4;
 
 export function useFilters() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(() => {
-    const params = new URLSearchParams(window.location.search);
-    const page = Number(params.get("page"));
+    const page = Number(searchParams.get("page"));
 
-    return Number.isNaN(page) ? page : 1;
+    const matchesPage = !Number.isNaN(page) && page > 0;
+
+    return matchesPage ? page : 1;
   });
 
   const [products, setProducts] = useState([]);
   const { filters } = useContext(FiltersContext);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -38,20 +39,19 @@ export function useFilters() {
   }, []);
 
   useEffect(() => {
-    const params = new URLSearchParams();
+    setSearchParams((params) => {
+      if (filters.title) params.set("text", filters.title);
+      if (filters.category) params.set("category", filters.category);
 
-    if (filters.title) params.append("text", filters.title);
-    if (filters.category) params.append("category", filters.category);
-    if (currentPage > 1) params.append("page", currentPage);
+      if (currentPage > 1) {
+        params.set("page", currentPage);
+      } else {
+        params.delete("page")
+      }
 
-    navigate(
-      {
-        pathname: location.pathname,
-        search: params.toString(),
-      },
-      { replace: true },
-    );
-  }, [filters, currentPage, navigate, location.pathname]);
+      return params;
+    });
+  }, [filters, currentPage, setSearchParams]);
 
   const filteredProducts = products.filter((product) => {
     const matchesTitle =

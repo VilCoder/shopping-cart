@@ -54,3 +54,21 @@ svg {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
+
+.nav-link-active {
+  color: var(--secondary);
+  fill: var(--secondary);
+  pointer-events: none;
+
+  i > svg:first-of-type {
+    transform: translateY(0px);
+  }
+
+  i > svg:last-of-type {
+    transform: translateY(100%);
+  }
+
+  div > span {
+    transform: translateY(-30px);
+  }
+}

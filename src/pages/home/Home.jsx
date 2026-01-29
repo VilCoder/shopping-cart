@@ -38,29 +38,21 @@ export function Home() {
         <h2>Category</h2>
 
         <div className={styles.links}>
-          <Link to="/store" className={styles.link} linkCategory="electronics">
+          <Link to="/store" className={styles.link}>
             <i className={styles.icon}>
               <DeviceIcon />
             </i>
             <span>Electronics</span>
           </Link>
 
-          <Link
-            to="/store"
-            className={styles.link}
-            linkCategory="women's clothing"
-          >
+          <Link to="/store" className={styles.link}>
             <i className={styles.icon}>
               <FemaleIcon />
             </i>
             <span>Women's Fashion</span>
           </Link>
 
-          <Link
-            to="/store"
-            className={styles.link}
-            linkCategory="men's clothing"
-          >
+          <Link to="/store" className={styles.link}>
             <i className={styles.icon}>
               <MaleIcon />
             </i>

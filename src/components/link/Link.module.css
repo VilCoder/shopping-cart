@@ -7,8 +7,8 @@
   }
 
   i > svg:last-of-type {
-  transform: translateY(100%);
-}
+    transform: translateY(100%);
+  }
 
   div > span {
     transform: translateY(-30px);

@@ -2,6 +2,14 @@ import styles from "./ProductsCart.module.css";
 import { MinusIcon, PlusIcon, RemoveIcon } from "../icons/Icons.jsx";
 import { ProductCard } from "./ProductCard.jsx";
 
+function ButtonCart({ children, ...restOfProps }) {
+  return (
+    <button type="button" {...restOfProps}>
+      {children}
+    </button>
+  );
+}
+
 export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
   const hasProducts = products?.length > 0;
 
@@ -15,29 +23,29 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
         <li className={styles.item} key={product.id}>
           <ProductCard product={product}>
             <div>
-              <button
-                type="button"
+              <ButtonCart
                 className={styles.trashButton}
                 onClick={() => onRemove(product.id)}
               >
                 <RemoveIcon />
-              </button>
+              </ButtonCart>
+
               <div>
-                <button
-                  type="button"
+                <ButtonCart
                   className={styles.minusButton}
                   onClick={() => onRemoveQuantity(product)}
                 >
                   <MinusIcon />
-                </button>
+                </ButtonCart>
+
                 <small>{product.quantity}</small>
-                <button
-                  type="button"
+                
+                <ButtonCart
                   className={styles.plusButton}
                   onClick={() => onAdd(product)}
                 >
                   <PlusIcon />
-                </button>
+                </ButtonCart>
               </div>
             </div>
           </ProductCard>

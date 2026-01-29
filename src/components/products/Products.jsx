@@ -12,7 +12,7 @@ export function Products({ products, onAdd }) {
     <ul className={styles.products}>
       {products?.map((product) => (
         <li key={product.id} className={styles.product}>
-          <ProductCard product={product}>
+          <ProductCard product={product} detailsTitle="See Details">
             <ButtonCard product={product} onClick={onAdd} />
           </ProductCard>
         </li>

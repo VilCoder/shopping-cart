@@ -5,12 +5,15 @@ import {
   ButtonCard,
   ProductCard,
 } from "../../components/products/ProductCard.jsx";
-import { LoaderIcon } from "../../components/icons/Icons.jsx";
-import { Link } from "../../components/link/Link.jsx";
+import {
+  ArrowLeft,
+  HeartIconFilled,
+  HeartIconOutline,
+  LoaderIcon,
+} from "../../components/icons/Icons.jsx";
+import { Header } from "../../components/header/Header.jsx";
 
 export function ProductDetail() {
-  const navigate = useNavigate();
-
   const { productId } = useParams();
   const productIdParse = Number(productId);
 
@@ -19,7 +22,9 @@ export function ProductDetail() {
   const [products, setProducts] = useState([]);
   const [sizeChosen, setSizeChosen] = useState("");
   const [colorChosen, setColorChosen] = useState("");
-  let product;
+  const [isActive, setIsActive] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products`)
@@ -38,6 +43,12 @@ export function ProductDetail() {
         setLoading(false);
       });
   }, [productId]);
+
+  let product;
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
 
   if (products.length > 0) {
     product = products.find((pro) => pro.id === productIdParse);
@@ -77,17 +88,22 @@ export function ProductDetail() {
 
   return (
     <>
-      <main className={styles.mainContent}>
-        <div className={styles.container}>
-          <nav className={styles.breadcrumb}>
-            <Link to="/store" className={styles.breadcrumbButton}>
-              store
-            </Link>
-            <span className={styles.breadcrumbSeparator}>/</span>
-            <span className={styles.breadcrumbCurrent}>{product.title}</span>
-          </nav>
-        </div>
+      <Header>
+        <button
+          className={styles.prevButtonDetail}
+          onClick={() => navigate(-1)}
+        >
+          <ArrowLeft />
+        </button>
 
+        <span className={styles.detailText}>Product Details</span>
+
+        <button className={styles.detailFavorite} onClick={handleClick}>
+          {isActive ? <HeartIconFilled /> : <HeartIconOutline />}
+        </button>
+      </Header>
+
+      <main className={styles.mainContent}>
         <ProductCard product={product}>
           <p className={styles.productDescription}>
             Discover the perfect combination of style and comfort. Its versatile

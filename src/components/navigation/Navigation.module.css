@@ -1,64 +1,15 @@
-.navigation,
-.logo,
-.navbar,
-.navbar a {
+.navbar a,
+.products {
   display: flex;
   align-items: center;
-}
-
-.navigation {
   justify-content: space-between;
-  padding-inline: 0.5rem;
-  background-color: var(--light);
-}
-
-.logo {
-  position: relative;
-  gap: 0.3rem;
-  font-size: 1.5rem;
-  color: var(--secondary);
-  outline: none;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block-end: 0;
-    inline-size: 0;
-    block-size: 2px;
-    background-color: var(--secondary);
-    transition: inline-size 0.1s linear;
-  }
-
-  &:hover::after,
-  &:focus::after {
-    inline-size: 100%;
-  }
-
-  svg {
-    inline-size: 1.8rem;
-    fill: var(--secondary);
-  }
-
-}
-
-.logo i {
-  inline-size: 1.8rem;
-  block-size: 1.8rem;
-
-  svg {
-    inline-size: 1.8rem;
-    fill: var(--secondary);
-  }
 }
 
 .navbar {
   position: relative;
-  justify-content: center;
-  gap: 1rem;
-
+  gap: 0.7rem;
+  
   a {
-    position: relative;
     flex-direction: column;
     font-size: 0.75rem;
     outline: none;
@@ -66,6 +17,10 @@
     &:hover,
     &:focus {
       color: var(--secondary);
+    }
+    
+    div {
+      position: relative;
     }
   }
 }
@@ -122,18 +77,16 @@
 }
 
 .products {
-  display: block;
+  justify-content: center;
   position: absolute;
   inset-inline-end: -0.3rem;
-  inset-block-start: -0.5rem;
+  inset-block-start: -0.4rem;
   padding: 0.1rem;
-  inline-size: 0.7rem;
-  block-size: 0.7rem;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  font-size: 0.5rem;
   background-color: var(--secondary);
   border-radius: 50%;
   color: var(--light);
-  text-align: center;
-  line-height: 0.75rem;
-  transform: translateY(0);
-  border: 1px solid;
+  line-height: normal;
 }

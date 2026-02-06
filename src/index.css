@@ -1,9 +1,9 @@
 :root {
-  --light: #FFF;
-  --primary: #F6F7F8;
+  --light: #fff;
+  --primary: #f6f7f8;
   --secondary: #166534;
-  --text-primary: #6F7684;
-  --text-secondary: #0F172A;
+  --text-primary: #6f7684;
+  --text-secondary: #0f172a;
   --text-muted: #d1d5db;
   --color-hover: #dfe8e4;
 
@@ -41,8 +41,7 @@ a {
 }
 
 svg {
-  inline-size: 1.5rem;
-  fill: var(--text-primary);
+  inline-size: 1.3rem;
 }
 
 .chevron-icon {
@@ -56,6 +55,9 @@ svg {
 }
 
 .nav-link-active {
+  /* display: flex;
+  justify-content: center;
+  inline-size: 100%; */
   color: var(--secondary);
   fill: var(--secondary);
   pointer-events: none;
@@ -69,6 +71,29 @@ svg {
   }
 
   div > span {
-    transform: translateY(-30px);
+    transform: translateY(-31px);
+  }
+}
+
+.icon {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+}
+
+#root .navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: 0.7rem;
+  background-color: var(--light);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  #root .navigation {
+    display: none;
   }
 }

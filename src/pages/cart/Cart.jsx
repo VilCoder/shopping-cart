@@ -2,16 +2,21 @@ import styles from "./Cart.module.css";
 import { useCart } from "../../hooks/useCart";
 import { ProductsCart } from "../../components/products/ProductsCart.jsx";
 import { Link } from "../../components/link/Link.jsx";
+import { Header } from "../../components/header/Header.jsx";
+import { ArrowLeft } from "../../components/icons/Icons.jsx";
+import { NavContent } from "../../components/navigation/Navigation.jsx";
+import { useNavigate } from "react-router";
 
 export function Cart() {
   const { cart, addToCart, removeToCart, removeQuantityToCart } = useCart();
+  const navigate = useNavigate();
 
   // Calculate the price of each product in the cart
   // and it stores it in an accumulator variable
   const total = cart.reduce(
     (accumulator, currentProduct) =>
       accumulator + currentProduct.price * currentProduct.quantity,
-    0
+    0,
   );
 
   // Format numbers according to country/language rules
@@ -22,6 +27,14 @@ export function Cart() {
 
   return (
     <>
+      <Header>
+        <button onClick={() => navigate(-1)}>
+          <ArrowLeft />
+        </button>
+
+        <NavContent to="/cart" title="My Cart" />
+      </Header>
+
       <main>
         <ProductsCart
           products={cart}
@@ -39,9 +52,7 @@ export function Cart() {
           <span>Total</span>
           <small>{formattedTotal}</small>
         </div>
-        <Link to="#" className={styles.btn}>
-          <span>Proceed to payment</span>
-        </Link>
+        <Link to="#" title="Proceed to payment" className={styles.btn} />
       </footer>
     </>
   );

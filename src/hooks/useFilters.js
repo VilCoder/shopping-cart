@@ -8,6 +8,7 @@ export function useFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [loading, setLoading] = useState(true);
+
   const [currentPage, setCurrentPage] = useState(() => {
     const page = Number(searchParams.get("page"));
 
@@ -39,18 +40,21 @@ export function useFilters() {
   }, []);
 
   useEffect(() => {
-    setSearchParams((params) => {
-      if (filters.title) params.set("text", filters.title);
-      if (filters.category) params.set("category", filters.category);
+    setSearchParams(
+      (params) => {
+        if (filters.title) params.set("text", filters.title);
+        if (filters.category) params.set("category", filters.category);
 
-      if (currentPage > 1) {
-        params.set("page", currentPage);
-      } else {
-        params.delete("page")
-      }
+        if (currentPage > 1) {
+          params.set("page", currentPage);
+        } else {
+          params.delete("page");
+        }
 
-      return params;
-    });
+        return params;
+      },
+      { replace: true },
+    );
   }, [filters, currentPage, setSearchParams]);
 
   const filteredProducts = products.filter((product) => {

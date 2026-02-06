@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router";
-import { Navigation } from "./components/navigation/Navigation.jsx";
-import { Home } from "./pages/home/Home.jsx";
 import { CartProvider } from "./context/cart/CartProvider.jsx";
-import { Store } from "./pages/store/Store.jsx";
 import { FiltersProvider } from "./context/filters/FiltersProvider.jsx";
+import { Home } from "./pages/home/Home.jsx";
+import { Store } from "./pages/store/Store.jsx";
 import { Cart } from "./pages/cart/Cart.jsx";
 import { NotFoundPage } from "./pages/404/404.jsx";
 import { ProductDetail } from "./pages/detail/Detail.jsx";
@@ -12,7 +11,6 @@ export function App() {
   return (
     <CartProvider>
       <FiltersProvider>
-        <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />

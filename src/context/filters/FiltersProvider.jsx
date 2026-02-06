@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router";
 
 export function FiltersProvider({ children }) {
   const [searchParams] = useSearchParams();
+  
   const [filters, setFilters] = useState(() => {
     return {
       category: searchParams.get("category") || "all",

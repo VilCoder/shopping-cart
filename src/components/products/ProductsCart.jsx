@@ -21,7 +21,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
     <ul className={styles.products}>
       {products?.map((product) => (
         <li className={styles.item} key={product.id}>
-          <ProductCard product={product}>
+          <ProductCard product={product} hasFavorite={false} >
             <div>
               <ButtonCart
                 className={styles.trashButton}

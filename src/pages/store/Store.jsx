@@ -41,11 +41,11 @@ export function Store() {
   return (
     <>
       <Header>
-        <button onClick={() => navigate(-1)}>
+        <button className="prevPageButton" onClick={() => navigate(-1)}>
           <ArrowLeft />
         </button>
 
-        <NavContent to="/store" title="Store" />
+        <h1 className="pageTitle">Store</h1>
 
         <Navigation>
           <NavContent to="/cart" title="Cart" items={cart.length}>

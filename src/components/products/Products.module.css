@@ -35,3 +35,10 @@
 .product > div {
   padding: 1rem;
 }
+
+.notFound {
+  inline-size: fit-content;
+  margin: 3rem auto;
+  font-size: 1.2rem;
+  font-weight: 500;
+}

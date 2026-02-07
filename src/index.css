@@ -54,10 +54,24 @@ svg {
   grid-template-rows: auto 1fr auto;
 }
 
+.prevPageButton {
+  display: grid;
+  place-content: center;
+  outline-color: var(--secondary);
+
+  &:hover > svg,
+  &:focus > svg {
+    stroke: var(--secondary);
+  }
+}
+
+
+.pageTitle {
+  font-size: 1.1rem;
+  color: var(--secondary);
+}
+
 .nav-link-active {
-  /* display: flex;
-  justify-content: center;
-  inline-size: 100%; */
   color: var(--secondary);
   fill: var(--secondary);
   pointer-events: none;

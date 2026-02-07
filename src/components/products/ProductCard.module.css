@@ -92,3 +92,25 @@
     transform: translateX(100%);
   }
 }
+
+.productFavorite {
+  display: grid;
+  place-content: center;  
+  position: absolute;
+  inset-inline-end: 7px;
+  inset-block-start: 7px;
+  inline-size: 2rem;
+  block-size: 2rem;
+  background-color: var(--light);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+
+  &:hover svg {
+    fill: var(--secondary);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

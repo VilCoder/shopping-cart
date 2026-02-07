@@ -27,10 +27,12 @@ import {
 } from "../../components/navigation/Navigation.jsx";
 import { useModal } from "../../hooks/useModal.js";
 import { useCart } from "../../hooks/useCart.js";
+import { useFavorites } from "../../hooks/useFavorites.js";
 
 export function Home() {
   const { showModal, setShowModal } = useModal();
   const { cart, addToCart } = useCart();
+  const { favorites } = useFavorites();
 
   const featuredProducts = initialProducts?.filter(
     (product) => product.destacated,
@@ -71,7 +73,7 @@ export function Home() {
             <CartIcon />
           </NavContent>
 
-          <NavContent to="/favorites" title="Favorites" items="0">
+          <NavContent to="/favorites" title="Favorites" items={favorites.length}>
             <HeartIconOutline />
             <HeartIconOutline />
           </NavContent>
@@ -189,7 +191,7 @@ export function Home() {
           <CartIcon />
         </NavContent>
 
-        <NavContent to="/favorites" title="Favorites" items="0">
+        <NavContent to="/favorites" title="Favorites" items={favorites.length}>
           <HeartIconOutline />
           <HeartIconOutline />
         </NavContent>

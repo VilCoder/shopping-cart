@@ -3,12 +3,14 @@ import { useCart } from "../../hooks/useCart";
 import { ProductsCart } from "../../components/products/ProductsCart.jsx";
 import { Link } from "../../components/link/Link.jsx";
 import { Header } from "../../components/header/Header.jsx";
-import { ArrowLeft } from "../../components/icons/Icons.jsx";
-import { NavContent } from "../../components/navigation/Navigation.jsx";
+import { ArrowLeft, HeartIconOutline } from "../../components/icons/Icons.jsx";
+import { NavContent, Navigation } from "../../components/navigation/Navigation.jsx";
 import { useNavigate } from "react-router";
+import { useFavorites } from "../../hooks/useFavorites.js";
 
 export function Cart() {
   const { cart, addToCart, removeToCart, removeQuantityToCart } = useCart();
+  const { favorites } = useFavorites();
   const navigate = useNavigate();
 
   // Calculate the price of each product in the cart
@@ -28,11 +30,19 @@ export function Cart() {
   return (
     <>
       <Header>
-        <button onClick={() => navigate(-1)}>
+        <button className="prevPageButton" onClick={() => navigate(-1)}>
           <ArrowLeft />
         </button>
 
-        <NavContent to="/cart" title="My Cart" />
+        <h1 className="pageTitle">My Cart</h1>
+
+        {/* <NavContent to="/cart" title="My Cart" /> */}
+        <Navigation>
+          <NavContent to="/favorites" title="Favorite" items={favorites.length}>
+            <HeartIconOutline />
+            <HeartIconOutline />
+          </NavContent>
+        </Navigation>
       </Header>
 
       <main>

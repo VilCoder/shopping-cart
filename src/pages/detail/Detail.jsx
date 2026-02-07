@@ -12,6 +12,7 @@ import {
   LoaderIcon,
 } from "../../components/icons/Icons.jsx";
 import { Header } from "../../components/header/Header.jsx";
+import { CustomButton } from "../../components/CustomButton.jsx";
 
 export function ProductDetail() {
   const { productId } = useParams();
@@ -89,25 +90,24 @@ export function ProductDetail() {
   return (
     <>
       <Header>
-        <button
-          className={styles.prevButtonDetail}
+        <CustomButton
+          className="prevPageButton"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft />
-        </button>
+        </CustomButton>
 
         <span className={styles.detailText}>Product Details</span>
 
-        <button className={styles.detailFavorite} onClick={handleClick}>
+        <CustomButton className={styles.detailFavorite} onClick={handleClick}>
           {isActive ? <HeartIconFilled /> : <HeartIconOutline />}
-        </button>
+        </CustomButton>
       </Header>
 
       <main className={styles.mainContent}>
-        <ProductCard product={product}>
+        <ProductCard product={product} hasFavorite={false}>
           <p className={styles.productDescription}>
-            Discover the perfect combination of style and comfort. Its versatile
-            design makes it the ideal choice for any occasion.
+            {product.description}
           </p>
         </ProductCard>
 

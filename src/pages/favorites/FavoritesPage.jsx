@@ -1,15 +1,22 @@
-import styles from "./FavoritesPage.module.css";
 import { useFavorites } from "../../hooks/useFavorites.js";
 import { Products } from "../../components/products/Products.jsx";
 import { useModal } from "../../hooks/useModal.js";
 import { useCart } from "../../hooks/useCart.js";
 import { Modal } from "../../components/modal/Modal.jsx";
-import { ArrowLeft, CartIcon, CheckIcon } from "../../components/icons/Icons.jsx";
+import {
+  ArrowLeft,
+  CartIcon,
+  CheckIcon,
+} from "../../components/icons/Icons.jsx";
 import { Header } from "../../components/header/Header.jsx";
 import { useNavigate } from "react-router";
-import { NavContent, Navigation } from "../../components/navigation/Navigation.jsx";
+import {
+  NavContent,
+  Navigation,
+} from "../../components/navigation/Navigation.jsx";
+import { CustomButton } from "../../components/CustomButton.jsx";
 
-export function FavoritesPage() {
+export default function FavoritesPage() {
   const { favorites } = useFavorites();
   const { showModal, setShowModal } = useModal();
   const { cart, addToCart } = useCart();
@@ -23,11 +30,15 @@ export function FavoritesPage() {
   return (
     <>
       <Header>
-        <button className="prevPageButton" onClick={() => navigate(-1)}>
+        <CustomButton
+          aria-label="Return to previous page"
+          className="prevPageButton"
+          onClick={() => navigate(-1)}
+        >
           <ArrowLeft />
-        </button>
+        </CustomButton>
 
-        <h1 className="pageTitle">Favorites</h1>
+        <h1 className="pageTitle">My Favorites</h1>
 
         <Navigation>
           <NavContent to="/cart" title="Cart" items={cart.length}>
@@ -37,7 +48,7 @@ export function FavoritesPage() {
         </Navigation>
       </Header>
 
-      <main>
+      <main style={{ padding: "0.7rem" }}>
         <Products products={favorites} onAdd={handleClick} />
         {showModal && (
           <Modal text="Product added to cart" type="success">

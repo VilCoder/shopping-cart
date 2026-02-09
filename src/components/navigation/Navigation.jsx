@@ -1,11 +1,13 @@
 import styles from "./Navigation.module.css";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 export function NavContent({ to, title, children, items = "" }) {
-
+  const location = useLocation();
+  
   return (
     <NavLink
       to={to}
+      state={{ from: location.pathname }}
       aria-label={title}
       className={({ isActive }) => (isActive ? "nav-link-active" : "")}
     >
@@ -20,8 +22,10 @@ export function NavContent({ to, title, children, items = "" }) {
   );
 }
 
-export function Navigation({ className, children }) {
-  const classesNavigation = `${styles.navbar} ${className}`;
+export function Navigation({ children, className = "" }) {
+  const navigationClasses = className
+    ? `${className} ${styles.navbar}`
+    : styles.navbar;
 
-  return <nav className={classesNavigation}>{children}</nav>;
+  return <nav className={navigationClasses}>{children}</nav>;
 }

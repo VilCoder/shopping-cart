@@ -14,7 +14,7 @@ import {
 import { Header } from "../../components/header/Header.jsx";
 import { CustomButton } from "../../components/CustomButton.jsx";
 
-export function ProductDetail() {
+export default function ProductDetailPage() {
   const { productId } = useParams();
   const productIdParse = Number(productId);
 
@@ -91,6 +91,7 @@ export function ProductDetail() {
     <>
       <Header>
         <CustomButton
+          aria-label="Return to previous page"
           className="prevPageButton"
           onClick={() => navigate(-1)}
         >
@@ -99,16 +100,18 @@ export function ProductDetail() {
 
         <span className={styles.detailText}>Product Details</span>
 
-        <CustomButton className={styles.detailFavorite} onClick={handleClick}>
+        <CustomButton
+          aria-label="Add to favorite"
+          className={styles.detailFavorite}
+          onClick={handleClick}
+        >
           {isActive ? <HeartIconFilled /> : <HeartIconOutline />}
         </CustomButton>
       </Header>
 
       <main className={styles.mainContent}>
         <ProductCard product={product} hasFavorite={false}>
-          <p className={styles.productDescription}>
-            {product.description}
-          </p>
+          <p className={styles.productDescription}>{product.description}</p>
         </ProductCard>
 
         <section className={styles.sizeSection}>

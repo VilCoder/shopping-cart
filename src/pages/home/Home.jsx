@@ -29,7 +29,7 @@ import { useModal } from "../../hooks/useModal.js";
 import { useCart } from "../../hooks/useCart.js";
 import { useFavorites } from "../../hooks/useFavorites.js";
 
-export function Home() {
+export default function HomePage() {
   const { showModal, setShowModal } = useModal();
   const { cart, addToCart } = useCart();
   const { favorites } = useFavorites();

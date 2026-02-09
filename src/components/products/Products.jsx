@@ -5,7 +5,7 @@ export function Products({ products, onAdd }) {
   const hasProducts = products?.length > 0;
 
   if (!hasProducts) {
-    return <p className={styles.notFound}>No products were found.</p>;
+    return <p className="notFound">No products were found.</p>;
   }
 
   return (

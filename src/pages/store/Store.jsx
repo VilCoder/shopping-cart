@@ -7,6 +7,7 @@ import {
   ArrowLeft,
   CartIcon,
   CheckIcon,
+  HeartIconOutline,
   LoaderIcon,
 } from "../../components/icons/Icons.jsx";
 import { useFilters } from "../../hooks/useFilters.js";
@@ -17,11 +18,14 @@ import {
   Navigation,
 } from "../../components/navigation/Navigation.jsx";
 import { useNavigate } from "react-router";
+import { useFavorites } from "../../hooks/useFavorites.js";
+import { CustomButton } from "../../components/CustomButton.jsx";
 
-export function Store() {
+export default function StorePage() {
   const navigate = useNavigate();
   const { showModal, setShowModal } = useModal();
   const { cart, addToCart } = useCart();
+  const { favorites } = useFavorites();
   const { loading, currentPage, totalPages, pageResults, handlePageChange } =
     useFilters();
 
@@ -41,9 +45,13 @@ export function Store() {
   return (
     <>
       <Header>
-        <button className="prevPageButton" onClick={() => navigate(-1)}>
+        <CustomButton
+          aria-label="Return to previous page"
+          className="prevPageButton"
+          onClick={() => navigate(-1)}
+        >
           <ArrowLeft />
-        </button>
+        </CustomButton>
 
         <h1 className="pageTitle">Store</h1>
 
@@ -51,6 +59,15 @@ export function Store() {
           <NavContent to="/cart" title="Cart" items={cart.length}>
             <CartIcon />
             <CartIcon />
+          </NavContent>
+
+          <NavContent
+            to="/favorites"
+            title="Favorites"
+            items={favorites.length}
+          >
+            <HeartIconOutline />
+            <HeartIconOutline />
           </NavContent>
         </Navigation>
       </Header>

@@ -44,6 +44,20 @@ svg {
   inline-size: 1.3rem;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.fallback {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 3rem auto;
+  padding-inline: 1rem;
+  text-transform: capitalize;
+}
+
 .chevron-icon {
   fill: none;
 }
@@ -64,7 +78,6 @@ svg {
     stroke: var(--secondary);
   }
 }
-
 
 .pageTitle {
   font-size: 1.1rem;
@@ -92,6 +105,13 @@ svg {
 .icon {
   inline-size: 1.5rem;
   block-size: 1.5rem;
+}
+
+.notFound {
+  inline-size: fit-content;
+  margin: 3rem auto;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 #root .navigation {

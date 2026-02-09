@@ -4,11 +4,15 @@ import { ProductsCart } from "../../components/products/ProductsCart.jsx";
 import { Link } from "../../components/link/Link.jsx";
 import { Header } from "../../components/header/Header.jsx";
 import { ArrowLeft, HeartIconOutline } from "../../components/icons/Icons.jsx";
-import { NavContent, Navigation } from "../../components/navigation/Navigation.jsx";
+import {
+  NavContent,
+  Navigation,
+} from "../../components/navigation/Navigation.jsx";
 import { useNavigate } from "react-router";
 import { useFavorites } from "../../hooks/useFavorites.js";
+import { CustomButton } from "../../components/CustomButton.jsx";
 
-export function Cart() {
+export default function CartPage() {
   const { cart, addToCart, removeToCart, removeQuantityToCart } = useCart();
   const { favorites } = useFavorites();
   const navigate = useNavigate();
@@ -30,13 +34,16 @@ export function Cart() {
   return (
     <>
       <Header>
-        <button className="prevPageButton" onClick={() => navigate(-1)}>
+        <CustomButton
+          aria-label="Return to previous page"
+          className="prevPageButton"
+          onClick={() => navigate(-1)}
+        >
           <ArrowLeft />
-        </button>
+        </CustomButton>
 
         <h1 className="pageTitle">My Cart</h1>
 
-        {/* <NavContent to="/cart" title="My Cart" /> */}
         <Navigation>
           <NavContent to="/favorites" title="Favorite" items={favorites.length}>
             <HeartIconOutline />

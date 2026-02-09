@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link as NavLink, useLocation } from "react-router";
+import { Link as NavLink } from "react-router";
 import { FiltersContext } from "../../context/filters/FiltersContext.js";
 
 export function Link({
@@ -10,7 +10,6 @@ export function Link({
   ...restOfProps
 }) {
   const { filters, setFilters } = useContext(FiltersContext);
-  const location = useLocation();
 
   const handleClick = () => {
     if (!linkCategory || linkCategory.toLowerCase() === filters.category)
@@ -25,7 +24,6 @@ export function Link({
   return (
     <NavLink
       to={to}
-      state={{ from: location.pathname }}
       onClick={handleClick}
       {...restOfProps}
     >

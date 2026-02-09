@@ -14,7 +14,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
   const hasProducts = products?.length > 0;
 
   if (!hasProducts) {
-    return <p>There are no products in the cart</p>;
+    return <p className="notFound">There are no products in the cart</p>;
   }
 
   return (

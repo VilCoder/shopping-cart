@@ -26,13 +26,14 @@ import {
   Navigation,
 } from "../../components/navigation/Navigation.jsx";
 import { useModal } from "../../hooks/useModal.js";
-import { useCart } from "../../hooks/useCart.js";
-import { useFavorites } from "../../hooks/useFavorites.js";
+import { FavoriteCounter } from "../../components/FavoriteCounter.jsx";
+import { useCartStore } from "../../store/cartStore.js";
 
 export default function HomePage() {
   const { showModal, setShowModal } = useModal();
-  const { cart, addToCart } = useCart();
-  const { favorites } = useFavorites();
+
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cartItemsCount = useCartStore((state) => state.cart.length);
 
   const featuredProducts = initialProducts?.filter(
     (product) => product.destacated,
@@ -68,12 +69,16 @@ export default function HomePage() {
             <StoreIcon />
           </NavContent>
 
-          <NavContent to="/cart" title="Cart" items={cart.length}>
+          <NavContent to="/cart" title="Cart" items={cartItemsCount}>
             <CartIcon />
             <CartIcon />
           </NavContent>
 
-          <NavContent to="/favorites" title="Favorites" items={favorites.length}>
+          <NavContent
+            to="/favorites"
+            title="Favorites"
+            items={<FavoriteCounter />}
+          >
             <HeartIconOutline />
             <HeartIconOutline />
           </NavContent>
@@ -174,7 +179,7 @@ export default function HomePage() {
           </Modal>
         )}
       </main>
-      
+
       <Navigation className="navigation">
         <NavContent to="/" title="Home">
           <HomeIcon />
@@ -186,12 +191,16 @@ export default function HomePage() {
           <StoreIcon />
         </NavContent>
 
-        <NavContent to="/cart" title="Cart" items={cart.length}>
+        <NavContent to="/cart" title="Cart" items={cartItemsCount}>
           <CartIcon />
           <CartIcon />
         </NavContent>
 
-        <NavContent to="/favorites" title="Favorites" items={favorites.length}>
+        <NavContent
+          to="/favorites"
+          title="Favorites"
+          items={<FavoriteCounter />}
+        >
           <HeartIconOutline />
           <HeartIconOutline />
         </NavContent>

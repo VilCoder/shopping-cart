@@ -16,11 +16,7 @@ export function AuthProvider({ children }) {
     isLoggedIn,
     login,
     logout,
-  }
+  };
 
-  return (
-    <AuthContext value={value}>
-      {children}
-    </AuthContext>
-  )
+  return <AuthContext value={value}>{children}</AuthContext>;
 }

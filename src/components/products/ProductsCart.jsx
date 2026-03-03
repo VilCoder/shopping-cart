@@ -1,6 +1,7 @@
 import styles from "./ProductsCart.module.css";
 import { MinusIcon, PlusIcon, RemoveIcon } from "../icons/Icons.jsx";
 import { ProductCard } from "./ProductCard.jsx";
+import { useCartStore } from "../../store/cartStore.js";
 
 function ButtonCart({ children, ...restOfProps }) {
   return (
@@ -10,8 +11,15 @@ function ButtonCart({ children, ...restOfProps }) {
   );
 }
 
-export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
-  const hasProducts = products?.length > 0;
+export function ProductsCart() {
+  console.log("Render ProductsCart")
+  const cart = useCartStore((state) => state.cart);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const removeQuantityFromCart = useCartStore(
+    (state) => state.removeQuantityFromCart,
+  );
+  const hasProducts = cart?.length > 0;
 
   if (!hasProducts) {
     return <p className="notFound">There are no products in the cart</p>;
@@ -19,13 +27,13 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
 
   return (
     <ul className={styles.products}>
-      {products?.map((product) => (
+      {cart?.map((product) => (
         <li className={styles.item} key={product.id}>
           <ProductCard product={product} hasFavorite={false} >
             <div>
               <ButtonCart
                 className={styles.trashButton}
-                onClick={() => onRemove(product.id)}
+                onClick={() => removeFromCart(product.id)}
               >
                 <RemoveIcon />
               </ButtonCart>
@@ -33,7 +41,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
               <div>
                 <ButtonCart
                   className={styles.minusButton}
-                  onClick={() => onRemoveQuantity(product)}
+                  onClick={() => removeQuantityFromCart(product)}
                 >
                   <MinusIcon />
                 </ButtonCart>
@@ -42,7 +50,7 @@ export function ProductsCart({ products, onAdd, onRemove, onRemoveQuantity }) {
                 
                 <ButtonCart
                   className={styles.plusButton}
-                  onClick={() => onAdd(product)}
+                  onClick={() => addToCart(product)}
                 >
                   <PlusIcon />
                 </ButtonCart>

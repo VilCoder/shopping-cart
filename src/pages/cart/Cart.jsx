@@ -1,5 +1,4 @@
 import styles from "./Cart.module.css";
-import { useCart } from "../../hooks/useCart";
 import { ProductsCart } from "../../components/products/ProductsCart.jsx";
 import { Link } from "../../components/link/Link.jsx";
 import { Header } from "../../components/header/Header.jsx";
@@ -9,13 +8,12 @@ import {
   Navigation,
 } from "../../components/navigation/Navigation.jsx";
 import { useNavigate } from "react-router";
-import { useFavorites } from "../../hooks/useFavorites.js";
 import { CustomButton } from "../../components/CustomButton.jsx";
+import { useCartStore } from "../../store/cartStore.js";
+import { FavoriteCounter } from "../../components/FavoriteCounter.jsx";
 
-export default function CartPage() {
-  const { cart, addToCart, removeToCart, removeQuantityToCart } = useCart();
-  const { favorites } = useFavorites();
-  const navigate = useNavigate();
+function CartPageFooter() {
+  const cart = useCartStore((state) => state.cart);
 
   // Calculate the price of each product in the cart
   // and it stores it in an accumulator variable
@@ -32,6 +30,24 @@ export default function CartPage() {
   }).format(total);
 
   return (
+    <footer className={styles.footerContent}>
+      <div>
+        <span>Subtotal</span>
+        <small>{formattedTotal}</small>
+      </div>
+      <div>
+        <span>Total</span>
+        <small>{formattedTotal}</small>
+      </div>
+      <Link to="#" title="Proceed to payment" className={styles.btn} />
+    </footer>
+  );
+}
+
+export default function CartPage() {
+  const navigate = useNavigate();
+
+  return (
     <>
       <Header>
         <CustomButton
@@ -45,7 +61,11 @@ export default function CartPage() {
         <h1 className="pageTitle">My Cart</h1>
 
         <Navigation>
-          <NavContent to="/favorites" title="Favorite" items={favorites.length}>
+          <NavContent
+            to="/favorites"
+            title="Favorite"
+            items={<FavoriteCounter />}
+          >
             <HeartIconOutline />
             <HeartIconOutline />
           </NavContent>
@@ -53,24 +73,10 @@ export default function CartPage() {
       </Header>
 
       <main>
-        <ProductsCart
-          products={cart}
-          onAdd={addToCart}
-          onRemove={removeToCart}
-          onRemoveQuantity={removeQuantityToCart}
-        />
+        <ProductsCart />
       </main>
-      <footer className={styles.footerContent}>
-        <div>
-          <span>Subtotal</span>
-          <small>{formattedTotal}</small>
-        </div>
-        <div>
-          <span>Total</span>
-          <small>{formattedTotal}</small>
-        </div>
-        <Link to="#" title="Proceed to payment" className={styles.btn} />
-      </footer>
+
+      <CartPageFooter />
     </>
   );
 }

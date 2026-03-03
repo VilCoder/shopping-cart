@@ -1,7 +1,6 @@
 import { FilterProducts } from "../../components/filters/FilterProducts.jsx";
 import { Products } from "../../components/products/Products.jsx";
 import { useModal } from "../../hooks/useModal.js";
-import { useCart } from "../../hooks/useCart.js";
 import { Modal } from "../../components/modal/Modal.jsx";
 import {
   ArrowLeft,
@@ -18,16 +17,17 @@ import {
   Navigation,
 } from "../../components/navigation/Navigation.jsx";
 import { useNavigate } from "react-router";
-import { useFavorites } from "../../hooks/useFavorites.js";
 import { CustomButton } from "../../components/CustomButton.jsx";
+import { FavoriteCounter } from "../../components/FavoriteCounter.jsx";
+import { useCartStore } from "../../store/cartStore.js";
 
 export default function StorePage() {
   const navigate = useNavigate();
   const { showModal, setShowModal } = useModal();
-  const { cart, addToCart } = useCart();
-  const { favorites } = useFavorites();
   const { loading, currentPage, totalPages, pageResults, handlePageChange } =
-    useFilters();
+  useFilters();
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cartItemsCount = useCartStore((state) => state.cart.length);
 
   const handleClick = (product) => {
     setShowModal(true);
@@ -56,7 +56,7 @@ export default function StorePage() {
         <h1 className="pageTitle">Store</h1>
 
         <Navigation>
-          <NavContent to="/cart" title="Cart" items={cart.length}>
+          <NavContent to="/cart" title="Cart" items={cartItemsCount}>
             <CartIcon />
             <CartIcon />
           </NavContent>
@@ -64,7 +64,7 @@ export default function StorePage() {
           <NavContent
             to="/favorites"
             title="Favorites"
-            items={favorites.length}
+            items={<FavoriteCounter />}
           >
             <HeartIconOutline />
             <HeartIconOutline />

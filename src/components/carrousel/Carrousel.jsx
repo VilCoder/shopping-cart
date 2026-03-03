@@ -41,6 +41,8 @@ export function Carrousel() {
       },
     ];
 
+    console.log("render carousel");
+
   return (
     <div className={styles.carrousel}>
       {messages.map((message) => (

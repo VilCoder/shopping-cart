@@ -24,7 +24,7 @@ export function CartProvider({ children }) {
   };
 
   const removeQuantityToCart = (product) => {
-    const index = cart.findIndex(item => item.id === product.id);
+    const index = cart.findIndex((item) => item.id === product.id);
 
     if (product.quantity === 1) {
       removeToCart(product.id);
@@ -41,23 +41,21 @@ export function CartProvider({ children }) {
   };
 
   const removeToCart = (id) => {
-    const newCart = cart.filter(item => item.id !== id);
+    const newCart = cart.filter((item) => item.id !== id);
     setCart(newCart);
   };
-  
+
   const clearCart = () => {
     setCart([]);
   };
 
-  return (
-    <CartContext value={{
-      cart,
-      addToCart,
-      removeQuantityToCart,
-      removeToCart,
-      clearCart
-    }}>
-      {children}
-    </CartContext>
-  )
+  const value = {
+    cart,
+    addToCart,
+    removeQuantityToCart,
+    removeToCart,
+    clearCart,
+  };
+
+  return <CartContext value={value}>{children}</CartContext>;
 }

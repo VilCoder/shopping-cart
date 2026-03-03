@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { FiltersContext } from "../context/filters/FiltersContext.js";
 import { useSearchParams } from "react-router";
+import { useFetchingProducts } from "./useFetchingProducts.js";
 
 const RESULT_PER_PAGE = 4;
 
 export function useFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(() => {
     const page = Number(searchParams.get("page"));
@@ -17,27 +16,8 @@ export function useFilters() {
     return matchesPage ? page : 1;
   });
 
-  const [products, setProducts] = useState([]);
+  const { loading, products } = useFetchingProducts();
   const { filters } = useContext(FiltersContext);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        setLoading(true);
-
-        const response = await fetch(`https://fakestoreapi.com/products`);
-        const data = await response.json();
-
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     setSearchParams(

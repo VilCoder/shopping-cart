@@ -1,12 +1,28 @@
 import styles from "./ProductCard.module.css";
-import { CustomButton } from "../CustomButton.jsx";
 import {
   CartIconPlus,
   HeartIconFilled,
   HeartIconOutline,
 } from "../icons/Icons.jsx";
 import { Link } from "../link/Link.jsx";
-import { useFavorites } from "../../hooks/useFavorites.js";
+import { useFavoritesStore } from "../../store/favoritesStore.js";
+
+function ProductCardFavoriteButton({ productId }) {
+  console.log("render productcartButton");
+  const isFavorite = useFavoritesStore((state) =>
+    state.favorites.includes(productId),
+  );
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+
+  return (
+    <button
+      className={styles.productFavorite}
+      onClick={() => toggleFavorite(productId)}
+    >
+      {isFavorite ? <HeartIconFilled /> : <HeartIconOutline />}
+    </button>
+  );
+}
 
 export function ProductCard({
   product,
@@ -14,29 +30,13 @@ export function ProductCard({
   detailsTitle = "",
   hasFavorite = true,
 }) {
-  const { id, image, title, price, isFavorite } = product;
-  const { toggleFavorites } = useFavorites();
+  console.log("render productCard");
 
-  const handleOnFavorite = () => {
-    toggleFavorites(product);
-  };
-
-  const favoriteContent = isFavorite ? (
-    <HeartIconFilled />
-  ) : (
-    <HeartIconOutline />
-  );
+  const { id, image, title, price } = product;
 
   return (
     <>
-      {hasFavorite && (
-        <CustomButton
-          className={styles.productFavorite}
-          onClick={handleOnFavorite}
-        >
-          {favoriteContent}
-        </CustomButton>
-      )}
+      {hasFavorite && <ProductCardFavoriteButton productId={id} />}
 
       <img src={image} alt={title} className={styles.image} />
       <article className={styles.info}>

@@ -13,6 +13,24 @@ import {
 } from "../../components/icons/Icons.jsx";
 import { Header } from "../../components/header/Header.jsx";
 import { CustomButton } from "../../components/CustomButton.jsx";
+import { useFavoritesStore } from "../../store/favoritesStore.js";
+
+function DetailFavoriteButton({ productId }) {
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+  const isFavorite = useFavoritesStore((state) =>
+    state.favorites.includes(productId),
+  );
+
+  return (
+    <button
+      aria-label="Add to favorite"
+      className={styles.detailFavorite}
+      onClick={() => toggleFavorite(productId)}
+    >
+      {isFavorite ? <HeartIconFilled /> : <HeartIconOutline />}
+    </button>
+  );
+}
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
@@ -23,7 +41,6 @@ export default function ProductDetailPage() {
   const [products, setProducts] = useState([]);
   const [sizeChosen, setSizeChosen] = useState("");
   const [colorChosen, setColorChosen] = useState("");
-  const [isActive, setIsActive] = useState(false);
 
   const navigate = useNavigate();
 
@@ -46,10 +63,6 @@ export default function ProductDetailPage() {
   }, [productId]);
 
   let product;
-
-  const handleClick = () => {
-    setIsActive(!isActive);
-  };
 
   if (products.length > 0) {
     product = products.find((pro) => pro.id === productIdParse);
@@ -100,13 +113,7 @@ export default function ProductDetailPage() {
 
         <span className={styles.detailText}>Product Details</span>
 
-        <CustomButton
-          aria-label="Add to favorite"
-          className={styles.detailFavorite}
-          onClick={handleClick}
-        >
-          {isActive ? <HeartIconFilled /> : <HeartIconOutline />}
-        </CustomButton>
+        <DetailFavoriteButton productId={product.id} />
       </Header>
 
       <main className={styles.mainContent}>

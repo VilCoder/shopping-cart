@@ -30,12 +30,10 @@ export function FavoritesProvider({ children }) {
     addToFavorites(product);
   };
 
-  return (
-    <FavoritesContext value={{
-      favorites,
-      toggleFavorites,
-    }}>
-      {children}
-    </FavoritesContext>
-  );
+  const value = {
+    favorites,
+    toggleFavorites,
+  };
+
+  return <FavoritesContext value={value}>{children}</FavoritesContext>;
 }

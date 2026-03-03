@@ -23,6 +23,7 @@ export function NavContent({ to, title, children, items = "" }) {
 }
 
 export function Navigation({ children, className = "" }) {
+  console.log("render navigation");
   const navigationClasses = className
     ? `${className} ${styles.navbar}`
     : styles.navbar;
